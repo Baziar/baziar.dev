@@ -1,65 +1,150 @@
-import Image from "next/image";
+import Image from 'next/image';
+import { Navigation } from '@/components/navigation';
+import { HeroSection } from '@/components/hero-section';
+import { AboutSection } from '@/components/about-section';
+import { ProjectsHeader } from '@/components/projects-header';
+import { ProjectsGrid } from '@/components/projects-grid';
+import { ContactHeader } from '@/components/contact-header';
+import { ContactButtons } from '@/components/contact-buttons';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Morteza Baziar | Full-Stack Developer',
+  description: 'Full-stack developer specializing in TypeScript, Python, React, and Next.js. Creator of RapidKit framework.',
+};
 
 export default function Home() {
+  const skills = [
+    'TypeScript', 'Python', 'React', 'Next.js', 'Node.js',
+    'FastAPI', 'NestJS', 'PostgreSQL', 'Docker', 'Git',
+  ];
+
+  const projects = [
+    {
+      title: 'RapidKit',
+      description: 'Production-ready FastAPI & NestJS project generator with 100+ modules',
+      link: 'https://github.com/getrapidkit',
+      tags: ['TypeScript', 'Python', 'CLI', 'Framework'],
+    },
+    {
+      title: 'RapidKit VS Code Extension',
+      description: 'Official VS Code extension for RapidKit with IntelliSense and project management',
+      link: 'https://marketplace.visualstudio.com',
+      tags: ['VS Code', 'TypeScript', 'Extension'],
+    },
+    {
+      title: 'create-rapidkit',
+      description: 'NPM package for creating RapidKit workspaces with demo mode',
+      link: 'https://www.npmjs.com/package/rapidkit',
+      tags: ['NPM', 'CLI', 'Node.js'],
+    },
+  ];
+
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: "Morteza Baziar",
+    url: "https://baziar.dev",
+    image: "https://baziar.dev/baziar-avatar.png",
+    sameAs: [
+      "https://github.com/Baziar",
+      "https://github.com/getrapidkit",
+      "https://www.linkedin.com/in/baziar/",
+    ],
+    jobTitle: "Full-Stack Developer",
+    worksFor: {
+      "@type": "Organization",
+      name: "RapidKit",
+      url: "https://getrapidkit.com",
+    },
+    knowsAbout: [
+      "TypeScript",
+      "Python",
+      "React",
+      "Next.js",
+      "Node.js",
+      "FastAPI",
+      "NestJS",
+      "PostgreSQL",
+      "Docker",
+      "Git",
+    ],
+    email: "baziar@live.com",
+  };
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
+      <div className="min-h-screen bg-gradient-to-b from-white via-white to-gray-50 dark:from-black dark:via-black dark:to-gray-950">
+        <Navigation />
+        <main className="max-w-6xl mx-auto px-4 sm:px-6">
+          <HeroSection />
+
+          <section id="about" className="py-8 sm:py-24 md:py-32 space-y-8 sm:space-y-12">
+            <AboutSection />
+
+            <div className="grid md:grid-cols-[1fr_250px] gap-8 md:gap-12 items-start">
+              <div className="space-y-8">
+                <div className="space-y-4 text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
+                  <p>I'm a full-stack developer with a passion for creating tools that make developers' lives easier. With years of experience in both frontend and backend development, I specialize in building scalable applications and developer frameworks.</p>
+                  <p>Currently working on RapidKit, a comprehensive framework for generating production-ready FastAPI and NestJS projects. I believe in open source, clean code, and sharing knowledge with the community.</p>
+                </div>
+
+                <div className="space-y-6">
+                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white font-outfit">Tech Stack</h3>
+                  <div className="flex flex-wrap gap-2">
+                    {skills.map((skill) => (
+                      <span key={skill} className="px-4 py-2 bg-gray-100 dark:bg-gray-900 rounded-lg text-sm font-medium hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors cursor-default text-gray-700 dark:text-gray-300">{skill}</span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              <div className="space-y-6 hidden md:block">
+                <div className="relative w-full aspect-square">
+                  <Image 
+                    src="/RapidKit.png" 
+                    alt="RapidKit Framework" 
+                    fill 
+                    className="rounded-2xl object-contain border-2 border-gray-200 dark:border-gray-800 shadow-lg p-4 bg-white dark:bg-gray-950" 
+                    loading="lazy"
+                    quality={80}
+                    sizes="(max-width: 768px) 100vw, 200px"
+                  />
+                </div>
+                <div className="space-y-4">
+                  <a 
+                    href="https://getrapidkit.com" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="flex flex-col items-center gap-3 p-4 rounded-xl bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-950/30 dark:to-purple-950/30 border-2 border-blue-200 dark:border-purple-500/50 hover:border-blue-400 dark:hover:border-purple-400 hover:shadow-lg dark:hover:shadow-purple-500/20 transition-all group"
+                  >
+                    <span className="text-xs font-bold uppercase tracking-widest text-blue-600 dark:text-blue-400 group-hover:text-blue-700 dark:group-hover:text-blue-300">Official Website</span>
+                    <span className="text-lg font-black text-gray-900 dark:text-white group-hover:scale-105 transition-transform">GetRapidkit.com</span>
+                    <span className="text-xs text-gray-600 dark:text-gray-400 text-center">Open-source framework for developers</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section id="projects" className="py-8 sm:py-24 md:py-32 space-y-8 sm:space-y-12">
+            <ProjectsHeader />
+            <ProjectsGrid projects={projects} />
+          </section>
+
+          <section id="contact" className="py-8 sm:py-24 md:py-32 space-y-8 sm:space-y-12">
+            <ContactHeader />
+            <ContactButtons />
+          </section>
+        </main>
+
+        <footer className="border-t border-gray-200 dark:border-gray-800 py-12">
+          <div className="max-w-6xl mx-auto px-6 text-center text-sm text-gray-600 dark:text-gray-400">
+            <p>© 2025 Morteza Baziar. Built with Next.js & Tailwind CSS.</p>
+          </div>
+        </footer>
+      </div>
+    </>
   );
 }
