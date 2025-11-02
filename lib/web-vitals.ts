@@ -11,8 +11,8 @@ export function reportWebVitals(metric: any) {
 
   // Send to analytics service (optional)
   // You can integrate with Google Analytics, Plausible, or custom endpoint here
-  if (typeof window !== 'undefined' && window.gtag) {
-    window.gtag('event', metric.name, {
+  if (typeof window !== 'undefined' && (window as any).gtag) {
+    (window as any).gtag('event', metric.name, {
       value: Math.round(metric.rating === 'good' ? metric.value : 0),
       event_category: 'web_vitals',
       event_label: metric.id,
@@ -44,7 +44,7 @@ export function setupPerformanceObserver() {
   // Monitor Resource Timing
   if ('performance' in window) {
     window.addEventListener('load', () => {
-      const perfData = performance.getEntriesByType('navigation')[0];
+      const perfData = performance.getEntriesByType('navigation')[0] as any;
       if (perfData) {
         console.log('Page Load Metrics:', {
           domContentLoaded: Math.round(perfData.domContentLoadedEventEnd - perfData.domContentLoadedEventStart),
