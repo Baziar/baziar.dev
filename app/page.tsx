@@ -2,10 +2,12 @@ import Image from 'next/image';
 import { Navigation } from '@/components/navigation';
 import { HeroSection } from '@/components/hero-section';
 import { AboutSection } from '@/components/about-section';
+import { SkillsSection } from '@/components/skills-section';
 import { ProjectsHeader } from '@/components/projects-header';
 import { ProjectsGrid } from '@/components/projects-grid';
 import { ContactHeader } from '@/components/contact-header';
 import { ContactButtons } from '@/components/contact-buttons';
+import { ScrollToTop } from '@/components/scroll-to-top';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -25,18 +27,21 @@ export default function Home() {
       description: 'Production-ready FastAPI & NestJS project generator with 100+ modules',
       link: 'https://github.com/getrapidkit',
       tags: ['TypeScript', 'Python', 'CLI', 'Framework'],
+      icon: 'rapidkit',
     },
     {
       title: 'RapidKit VS Code Extension',
       description: 'Official VS Code extension for RapidKit with IntelliSense and project management',
-      link: 'https://marketplace.visualstudio.com',
+      link: 'https://marketplace.visualstudio.com/items?itemName=rapidkit.rapidkit-vscode',
       tags: ['VS Code', 'TypeScript', 'Extension'],
+      icon: 'vscode',
     },
     {
       title: 'create-rapidkit',
       description: 'NPM package for creating RapidKit workspaces with demo mode',
       link: 'https://www.npmjs.com/package/rapidkit',
       tags: ['NPM', 'CLI', 'Node.js'],
+      icon: 'npm',
     },
   ];
 
@@ -128,6 +133,10 @@ export default function Home() {
             </div>
           </section>
 
+          <section id="skills" className="py-8 sm:py-24 md:py-32">
+            <SkillsSection />
+          </section>
+
           <section id="projects" className="py-8 sm:py-24 md:py-32 space-y-8 sm:space-y-12">
             <ProjectsHeader />
             <ProjectsGrid projects={projects} />
@@ -139,9 +148,20 @@ export default function Home() {
           </section>
         </main>
 
-        <footer className="border-t border-gray-200 dark:border-gray-800 py-12">
-          <div className="max-w-6xl mx-auto px-6 text-center text-sm text-gray-600 dark:text-gray-400">
-            <p>© 2025 Morteza Baziar. Built with Next.js & Tailwind CSS.</p>
+        <footer className="border-t border-gray-200 dark:border-gray-800 py-12 bg-gray-50/50 dark:bg-gray-900/50">
+          <div className="max-w-6xl mx-auto px-6">
+            <div className="flex flex-col md:flex-row justify-between items-center gap-6">
+              <div className="text-center md:text-left">
+                <p className="text-sm text-gray-600 dark:text-gray-400">
+                  © 2025 <span className="font-semibold text-gray-900 dark:text-white">Morteza Baziar</span>. Built with Next.js & Tailwind CSS.
+                </p>
+                <p className="text-xs text-gray-500 dark:text-gray-500 mt-1">
+                  Open source enthusiast • Creator of RapidKit
+                </p>
+              </div>
+              
+              <ScrollToTop />
+            </div>
           </div>
         </footer>
       </div>

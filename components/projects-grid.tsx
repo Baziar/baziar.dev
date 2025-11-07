@@ -1,13 +1,17 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Code2, ExternalLink } from 'lucide-react';
+import { ExternalLink, Zap } from 'lucide-react';
+import Image from 'next/image';
+import { VscVscode } from 'react-icons/vsc';
+import { SiNpm } from 'react-icons/si';
 
 interface Project {
   title: string;
   description: string;
   link: string;
   tags: string[];
+  icon?: string;
 }
 
 interface ProjectsGridProps {
@@ -15,6 +19,27 @@ interface ProjectsGridProps {
 }
 
 export function ProjectsGrid({ projects }: ProjectsGridProps) {
+  const getIcon = (iconName?: string) => {
+    if (iconName === 'npm') {
+      return <SiNpm className="w-8 h-8 text-[#CB3837]" />;
+    }
+    if (iconName === 'vscode') {
+      return <VscVscode className="w-8 h-8 text-[#007ACC]" />;
+    }
+    if (iconName === 'rapidkit') {
+      return (
+        <Image 
+          src="/RapidKit.png" 
+          alt="RapidKit" 
+          width={32} 
+          height={32}
+          className="w-8 h-8"
+        />
+      );
+    }
+    return <Zap className="w-5 h-5" />;
+  };
+
   return (
     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
       {projects.map((project, idx) => (
@@ -31,8 +56,8 @@ export function ProjectsGrid({ projects }: ProjectsGridProps) {
           className="group p-6 border border-gray-200 dark:border-gray-800 rounded-xl hover:border-gray-400 dark:hover:border-gray-600 hover:shadow-lg transition-all space-y-4 bg-white dark:bg-black"
         >
           <div className="flex items-start justify-between">
-            <div className="p-2 bg-gray-100 dark:bg-gray-900 rounded-lg">
-              <Code2 className="w-5 h-5" />
+            <div className="p-2 bg-gray-100 dark:bg-gray-900 rounded-lg flex items-center justify-center">
+              {getIcon(project.icon)}
             </div>
             <ExternalLink className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" />
           </div>

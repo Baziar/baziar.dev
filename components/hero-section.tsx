@@ -2,7 +2,8 @@
 
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import { Github, Mail, Zap } from 'lucide-react';
+import { Github, Mail, Linkedin, Terminal } from 'lucide-react';
+import { useState, useEffect } from 'react';
 
 const fadeIn = {
   initial: { opacity: 0, y: 20 },
@@ -11,6 +12,22 @@ const fadeIn = {
 };
 
 export function HeroSection() {
+  const [typedText, setTypedText] = useState('');
+  const fullText = 'Full-Stack Developer & Open Source Enthusiast';
+  
+  useEffect(() => {
+    let index = 0;
+    const timer = setInterval(() => {
+      if (index <= fullText.length) {
+        setTypedText(fullText.slice(0, index));
+        index++;
+      } else {
+        clearInterval(timer);
+      }
+    }, 50);
+    return () => clearInterval(timer);
+  }, []);
+
   return (
     <section className="flex flex-col justify-center py-24">
       <motion.div {...fadeIn} className="flex flex-col md:flex-row gap-12 items-center">
@@ -67,8 +84,14 @@ export function HeroSection() {
               </motion.span>
             </h1>
             
-            <p className="text-lg sm:text-xl md:text-2xl text-gray-600 dark:text-gray-400 mt-2">
-              Full-Stack Developer & Open Source Enthusiast
+            <p className="text-lg sm:text-xl md:text-2xl text-gray-600 dark:text-gray-400 mt-2 min-h-[2rem] flex items-center justify-center md:justify-start">
+              <Terminal className="w-5 h-5 mr-2 text-blue-500" />
+              <span>{typedText}</span>
+              <motion.span
+                animate={{ opacity: [1, 0] }}
+                transition={{ duration: 0.8, repeat: Infinity }}
+                className="inline-block w-0.5 h-6 bg-blue-500 ml-1"
+              />
             </p>
           </div>
           
@@ -88,6 +111,18 @@ export function HeroSection() {
             >
               <Github className="w-5 h-5" />
               GitHub
+            </motion.a>
+            
+            <motion.a
+              whileHover={{ scale: 1.05, boxShadow: '0 10px 25px rgba(0,0,0,0.1)' }}
+              whileTap={{ scale: 0.95 }}
+              href="https://www.linkedin.com/in/baziar/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center gap-2 px-6 py-3 bg-[#0A66C2] text-white rounded-lg hover:bg-[#004182] transition-all w-full sm:w-auto font-semibold shadow-lg"
+            >
+              <Linkedin className="w-5 h-5" />
+              LinkedIn
             </motion.a>
             
             <motion.a
