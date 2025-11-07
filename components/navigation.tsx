@@ -36,10 +36,11 @@ export function Navigation() {
           animate={{ opacity: 1, x: 0 }}
           className="hidden md:flex gap-6 items-center"
         >
-          <a href="#about" className="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors">About</a>
-          <a href="#skills" className="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors">Skills</a>
-          <a href="#projects" className="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors">Projects</a>
-          <a href="#contact" className="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors">Contact</a>
+          <a href="/#about" className="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors">About</a>
+          <a href="/#skills" className="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors">Skills</a>
+          <a href="/#projects" className="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors">Projects</a>
+          <a href="/resume" className="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors">Resume</a>
+          <a href="/#contact" className="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors">Contact</a>
           <ThemeToggle />
         </motion.div>
 
@@ -68,28 +69,35 @@ export function Navigation() {
           >
             <div className="px-4 py-4 space-y-3">
               <a
-                href="#about"
+                href="/#about"
                 onClick={() => setMobileMenuOpen(false)}
                 className="block py-2 text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors"
               >
                 About
               </a>
               <a
-                href="#skills"
+                href="/#skills"
                 onClick={() => setMobileMenuOpen(false)}
                 className="block py-2 text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors"
               >
                 Skills
               </a>
               <a
-                href="#projects"
+                href="/#projects"
                 onClick={() => setMobileMenuOpen(false)}
                 className="block py-2 text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors"
               >
                 Projects
               </a>
               <a
-                href="#contact"
+                href="/resume"
+                onClick={() => setMobileMenuOpen(false)}
+                className="block py-2 text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors"
+              >
+                Resume
+              </a>
+              <a
+                href="/#contact"
                 onClick={() => setMobileMenuOpen(false)}
                 className="block py-2 text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors"
               >

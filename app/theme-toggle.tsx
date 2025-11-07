@@ -18,7 +18,7 @@ export function ThemeToggle() {
       onClick={handleClick}
       whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.9 }}
-      className="p-2 rounded-lg bg-gray-100 dark:bg-gray-900 hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors"
+      className="p-2 rounded-lg bg-gray-100 text-black dark:text-white dark:bg-gray-900 hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors"
       aria-label="Toggle theme"
     >
       {theme === 'light' ? (
