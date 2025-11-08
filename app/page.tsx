@@ -32,14 +32,14 @@ export default function Home() {
     {
       title: 'RapidKit VS Code Extension',
       description: 'Official VS Code extension for RapidKit with IntelliSense and project management',
-      link: 'https://marketplace.visualstudio.com/items?itemName=rapidkit.rapidkit-vscode',
+      link: '/rapidkit-vscode',
       tags: ['VS Code', 'TypeScript', 'Extension'],
       icon: 'vscode',
     },
     {
       title: 'create-rapidkit',
       description: 'NPM package for creating RapidKit workspaces with demo mode',
-      link: 'https://www.npmjs.com/package/rapidkit',
+      link: '/rapidkit-npm',
       tags: ['NPM', 'CLI', 'Node.js'],
       icon: 'npm',
     },
