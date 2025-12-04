@@ -33,7 +33,7 @@ export function RapidKitVSCodeContent() {
     {
       icon: <Package className="w-6 h-6" />,
       title: 'Module Browser',
-      description: 'Explore and install 100+ production-ready modules with one click.',
+      description: 'Explore and install 27+ production-ready modules with one click.',
       items: [
         'Organized by category (Auth, Database, Cache, etc.)',
         'Module search and filtering',
@@ -125,7 +125,7 @@ export function RapidKitVSCodeContent() {
         >
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-50 dark:bg-blue-950 rounded-full text-sm font-medium text-blue-700 dark:text-blue-300">
             <CheckCircle className="w-4 h-4" />
-            Version 0.2.0 - Optimized & Production Ready
+            Version 0.4.1 - Optimized & Production Ready
           </div>
           
           <h1 className="text-5xl md:text-7xl font-bold font-outfit">

@@ -23,22 +23,22 @@ export default function Home() {
 
   const projects = [
     {
-      title: 'RapidKit',
-      description: 'Production-ready FastAPI & NestJS project generator with 100+ modules',
-      link: 'https://github.com/getrapidkit',
-      tags: ['TypeScript', 'Python', 'CLI', 'Framework'],
+      title: 'RapidKit Framework',
+      description: 'Open-source framework for building production-ready FastAPI & NestJS projects with 27+ modules',
+      link: '/rapidkit',
+      tags: ['TypeScript', 'Python', 'Framework', 'Open Source'],
       icon: 'rapidkit',
     },
     {
-      title: 'RapidKit VS Code Extension',
-      description: 'Official VS Code extension for RapidKit with IntelliSense and project management',
+      title: 'RapidKit VS Code',
+      description: 'Official VS Code extension with IntelliSense, project wizard, and module browser',
       link: '/rapidkit-vscode',
       tags: ['VS Code', 'TypeScript', 'Extension'],
       icon: 'vscode',
     },
     {
-      title: 'create-rapidkit',
-      description: 'NPM package for creating RapidKit workspaces with demo mode',
+      title: 'RapidKit CLI',
+      description: 'NPM package for instant project creation - npx rapidkit my-api --template fastapi',
       link: '/rapidkit-npm',
       tags: ['NPM', 'CLI', 'Node.js'],
       icon: 'npm',

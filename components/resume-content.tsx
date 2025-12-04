@@ -1,8 +1,9 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Download, Briefcase, Code2, Rocket, Globe, Github, Linkedin, Mail, MapPin, Calendar, Users, MessageSquare, Lightbulb, Target, CheckCircle } from 'lucide-react';
+import { Download, Briefcase, Code2, Rocket, Globe, Github, Linkedin, Mail, MapPin, Calendar, Users, MessageSquare, Lightbulb, Target, CheckCircle, ExternalLink } from 'lucide-react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { VscVscode } from 'react-icons/vsc';
 import { SiNpm } from 'react-icons/si';
 import { 
@@ -11,21 +12,44 @@ import {
   SiTailwindcss, SiJavascript
 } from 'react-icons/si';
 
+// Calculate duration between two dates
+function calculateDuration(startDate: string, endDate?: string): string {
+  const start = new Date(startDate);
+  const end = endDate ? new Date(endDate) : new Date();
+  
+  let months = (end.getFullYear() - start.getFullYear()) * 12;
+  months += end.getMonth() - start.getMonth();
+  
+  // Add 1 to include current month
+  if (!endDate) months += 1;
+  
+  const years = Math.floor(months / 12);
+  const remainingMonths = months % 12;
+  
+  if (years === 0) {
+    return `${remainingMonths} month${remainingMonths !== 1 ? 's' : ''}`;
+  } else if (remainingMonths === 0) {
+    return `${years} year${years !== 1 ? 's' : ''}`;
+  } else {
+    return `${years} year${years !== 1 ? 's' : ''} ${remainingMonths} month${remainingMonths !== 1 ? 's' : ''}`;
+  }
+}
+
 const experiences = [
   {
     title: 'Founder & Full-Stack Developer',
     company: 'RapidKit',
     type: 'Full-time',
-    period: 'Mar 2025 - Present',
-    duration: '9 months',
+    startDate: '2025-03-01',
+    endDate: undefined, // Present
     location: 'Remote',
     description: 'Building scalable applications and open-source developer tools. Creator of the RapidKit framework — passionate about Python, TypeScript, and crafting exceptional developer experiences.',
     highlights: [
-      'Developed RapidKit framework for FastAPI and NestJS project generation with 100+ production-ready modules',
-      'Built VS Code extension with IntelliSense support, achieving 1000+ downloads in first month',
-      'Created NPM package (create-rapidkit) for rapid workspace setup with interactive CLI',
+      'Developed RapidKit framework for FastAPI and NestJS project generation with 27+ production-ready modules',
+      'Built VS Code extension with IntelliSense support and module browser for seamless development',
+      'Created NPM package (rapidkit) for rapid project setup with Smart CLI Delegation',
       'Established open-source community with comprehensive documentation and contributor guidelines',
-      'Architected modular plugin system supporting authentication, database, caching, and 10+ other modules',
+      'Architected modular plugin system supporting authentication, database, caching, and more',
     ],
     skills: ['Python', 'TypeScript', 'FastAPI', 'NestJS', 'React', 'Next.js', 'Docker', 'PostgreSQL', 'VS Code API', 'CLI Development'],
     icon: Rocket,
@@ -35,8 +59,8 @@ const experiences = [
     title: 'Front-end Team Leader',
     company: 'DATSA (Data - System Development - Analytics)',
     type: 'Full-time',
-    period: 'May 2023 - May 2025',
-    duration: '2 years 1 month',
+    startDate: '2023-05-01',
+    endDate: '2025-05-01',
     location: 'Tehran, Iran (On-site)',
     description: 'Led frontend development team, architected scalable solutions, and mentored junior developers.',
     highlights: [
@@ -54,8 +78,8 @@ const experiences = [
     title: 'Founder & Developer',
     company: 'MoBox.Dev Platform',
     type: 'Full-time',
-    period: 'Jan 2016 - Mar 2025',
-    duration: '9 years 3 months',
+    startDate: '2016-01-01',
+    endDate: '2025-03-01',
     location: 'Tehran, Iran',
     description: 'Founded and developed custom software solutions for diverse clients across multiple industries.',
     highlights: [
@@ -73,8 +97,8 @@ const experiences = [
     title: 'Senior Frontend Developer',
     company: 'Medtech',
     type: 'Part-time',
-    period: 'Sep 2021 - Sep 2022',
-    duration: '1 year 1 month',
+    startDate: '2021-09-01',
+    endDate: '2022-09-01',
     location: 'Tehran, Iran (On-site)',
     description: 'Developed medical technology applications with focus on performance and accessibility.',
     highlights: [
@@ -115,24 +139,27 @@ const skills = {
 const projects = [
   {
     name: 'RapidKit Framework',
-    description: 'Production-ready FastAPI & NestJS project generator with 100+ modules including authentication, database, caching, logging, and more.',
-    link: 'https://github.com/getrapidkit',
+    description: 'Production-ready FastAPI & NestJS project generator with 27+ modules including authentication, database, caching, logging, and more.',
+    link: '/rapidkit',
     tech: ['Python', 'TypeScript', 'CLI', 'Jinja2'],
     icon: 'rapidkit',
+    internal: true,
   },
   {
     name: 'RapidKit VS Code Extension',
-    description: 'Official VS Code extension providing IntelliSense, project management, and scaffolding tools for RapidKit framework.',
-    link: 'https://marketplace.visualstudio.com/items?itemName=rapidkit.rapidkit-vscode',
+    description: 'Official VS Code extension providing IntelliSense, project management, and module browser for RapidKit framework.',
+    link: '/rapidkit-vscode',
     tech: ['TypeScript', 'VS Code API', 'Node.js'],
     icon: 'vscode',
+    internal: true,
   },
   {
-    name: 'create-rapidkit (NPM)',
-    description: 'Interactive CLI tool for creating RapidKit workspaces with demo mode and customizable configurations.',
-    link: 'https://www.npmjs.com/package/rapidkit',
+    name: 'RapidKit CLI (NPM)',
+    description: 'CLI tool for creating RapidKit projects with Smart CLI Delegation and unified commands.',
+    link: '/rapidkit-npm',
     tech: ['TypeScript', 'Node.js', 'CLI', 'NPM'],
     icon: 'npm',
+    internal: true,
   },
 ];
 
@@ -308,9 +335,16 @@ export function ResumeContent() {
                     </div>
                     <div className="flex flex-wrap items-center gap-2 text-sm text-gray-500 dark:text-gray-500 mt-1">
                       <Calendar className="w-3 h-3" />
-                      <span>{exp.period}</span>
+                      <span>
+                        {new Date(exp.startDate).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })}
+                        {' - '}
+                        {exp.endDate 
+                          ? new Date(exp.endDate).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })
+                          : 'Present'
+                        }
+                      </span>
                       <span>•</span>
-                      <span>{exp.duration}</span>
+                      <span>{calculateDuration(exp.startDate, exp.endDate)}</span>
                       <span>•</span>
                       <MapPin className="w-3 h-3" />
                       <span>{exp.location}</span>
@@ -360,42 +394,44 @@ export function ResumeContent() {
         </h2>
         
         <div className="grid md:grid-cols-2 gap-6">
-          {projects.map((project, index) => (
-            <motion.a
-              key={project.name}
-              href={project.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5 + index * 0.1 }}
-              whileHover={{ y: -5 }}
-              className="group p-6 border-2 border-gray-200 dark:border-gray-800 rounded-2xl hover:border-blue-400 dark:hover:border-purple-500 hover:shadow-xl transition-all space-y-4 bg-white dark:bg-black"
-            >
-              <div className="flex items-start justify-between">
-                <div className="p-2 bg-gray-100 dark:bg-gray-900 rounded-lg flex items-center justify-center">
-                  {getProjectIcon(project.icon)}
+          {projects.map((project, index) => {
+            const MotionLink = motion(Link);
+            return (
+              <MotionLink
+                key={project.name}
+                href={project.link}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.5 + index * 0.1 }}
+                whileHover={{ y: -5 }}
+                className="group p-6 border-2 border-gray-200 dark:border-gray-800 rounded-2xl hover:border-blue-400 dark:hover:border-purple-500 hover:shadow-xl transition-all space-y-4 bg-white dark:bg-black"
+              >
+                <div className="flex items-start justify-between">
+                  <div className="p-2 bg-gray-100 dark:bg-gray-900 rounded-lg flex items-center justify-center">
+                    {getProjectIcon(project.icon)}
+                  </div>
+                  <ExternalLink className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity text-gray-400" />
                 </div>
-              </div>
-              
-              <h3 className="text-lg font-bold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-purple-400 transition-colors">
-                {project.name}
-              </h3>
-              <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
-                {project.description}
-              </p>
-              <div className="flex flex-wrap gap-2">
-                {project.tech.map((tech) => (
-                  <span
-                    key={tech}
-                    className="text-xs px-2 py-1 bg-blue-50 dark:bg-purple-950/30 text-blue-700 dark:text-purple-300 rounded font-medium"
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
-            </motion.a>
-          ))}
+                
+                <h3 className="text-lg font-bold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-purple-400 transition-colors">
+                  {project.name}
+                </h3>
+                <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                  {project.description}
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  {project.tech.map((tech) => (
+                    <span
+                      key={tech}
+                      className="text-xs px-2 py-1 bg-blue-50 dark:bg-purple-950/30 text-blue-700 dark:text-purple-300 rounded font-medium"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </MotionLink>
+            );
+          })}
         </div>
       </motion.section>
 

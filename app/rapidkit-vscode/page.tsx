@@ -29,6 +29,9 @@ export const metadata: Metadata = {
     title: 'RapidKit VS Code Extension',
     description: 'Professional development tool for FastAPI & NestJS projects',
   },
+  alternates: {
+    canonical: 'https://baziar.dev/rapidkit-vscode',
+  },
 };
 
 export default function RapidKitVSCodePage() {
@@ -50,7 +53,7 @@ export default function RapidKitVSCodePage() {
     },
     "description": "Official VS Code extension for RapidKit framework with IntelliSense, project management, and module browser",
     "downloadUrl": "https://marketplace.visualstudio.com/items?itemName=rapidkit.rapidkit-vscode",
-    "softwareVersion": "0.2.0",
+    "softwareVersion": "0.4.1",
     "aggregateRating": {
       "@type": "AggregateRating",
       "ratingValue": "5",

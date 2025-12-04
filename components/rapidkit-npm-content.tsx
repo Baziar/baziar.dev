@@ -23,7 +23,7 @@ import { LiveStats } from './live-stats';
 
 export function RapidKitNpmContent() {
   const [copied, setCopied] = useState(false);
-  const installCommand = 'npx rapidkit my-workspace --demo';
+  const installCommand = 'npx rapidkit my-api --template fastapi';
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(installCommand);
@@ -34,24 +34,24 @@ export function RapidKitNpmContent() {
   const features = [
     {
       icon: <Rocket className="w-6 h-6" />,
-      title: 'Demo Mode Available Now',
-      description: 'Create workspaces with bundled FastAPI templates. No Python RapidKit required.',
+      title: 'Smart CLI Delegation',
+      description: 'Intelligent routing to Python or Demo mode based on environment.',
       items: [
-        'Instant workspace creation',
-        'Multiple projects per workspace',
-        'Bundled FastAPI templates',
-        'No complex dependencies'
+        'Auto-detects Python RapidKit installation',
+        'Seamless transition between modes',
+        'One command for all scenarios',
+        'Enhanced developer experience'
       ]
     },
     {
       icon: <Layers className="w-6 h-6" />,
-      title: 'Workspace Architecture',
-      description: 'Organize multiple projects in one development environment.',
+      title: 'Unified Project Creation',
+      description: 'Create FastAPI and NestJS projects with a single command.',
       items: [
-        'Container directory structure',
-        'Shared virtual environment',
-        'Microservices-friendly',
-        'Isolated from system Python'
+        'npx rapidkit project-name --template fastapi',
+        'npx rapidkit project-name --template nestjs',
+        'Interactive framework selection',
+        'Workspace architecture support'
       ]
     },
     {
@@ -70,10 +70,10 @@ export function RapidKitNpmContent() {
       title: 'Project Templates',
       description: 'Production-ready templates for FastAPI and NestJS.',
       items: [
-        'fastapi.standard - Basic features',
-        'fastapi.advanced - Advanced features',
-        'nestjs.standard - TypeScript basics',
-        'nestjs.advanced - Enterprise-ready'
+        'fastapi-standard - Full features',
+        'fastapi-ddd - Domain-driven design',
+        'nestjs-standard - TypeScript ready',
+        'More templates coming soon'
       ]
     },
     {
@@ -102,27 +102,27 @@ export function RapidKitNpmContent() {
 
   const usageModes = [
     {
-      title: 'Demo Mode',
-      badge: 'Available Now',
-      description: 'Perfect for prototyping and learning',
-      command: 'npx rapidkit my-workspace --demo',
+      title: 'FastAPI Project',
+      badge: 'Python',
+      description: 'Create production-ready FastAPI projects with DDD architecture',
+      command: 'npx rapidkit my-api --template fastapi',
       steps: [
-        'Create demo workspace instantly',
-        'Generate FastAPI projects with bundled templates',
-        'No Python RapidKit dependency',
-        'Start coding immediately'
+        'Smart CLI Delegation to Python RapidKit',
+        'Access 27+ production modules',
+        'DDD architecture out of the box',
+        'Full CLI command support'
       ]
     },
     {
-      title: 'Full Mode',
-      badge: 'Coming Soon',
-      description: 'Complete RapidKit experience with all features',
-      command: 'npx rapidkit my-workspace',
+      title: 'NestJS Project',
+      badge: 'TypeScript',
+      description: 'Create enterprise-ready NestJS projects',
+      command: 'npx rapidkit my-api --template nestjs',
       steps: [
-        'Install RapidKit Python package',
-        'Access 100+ production modules',
-        'Full CLI command support',
-        'Enterprise-ready features'
+        'TypeScript-first development',
+        'Modular architecture',
+        'Enterprise patterns included',
+        'Full CLI command support'
       ]
     }
   ];
@@ -130,27 +130,27 @@ export function RapidKitNpmContent() {
   const workflow = [
     {
       step: '1',
-      title: 'Create Workspace',
-      demo: 'npx rapidkit my-workspace --demo',
-      full: 'npx rapidkit my-workspace'
+      title: 'Create Project',
+      fastapi: 'npx rapidkit my-api --template fastapi',
+      nestjs: 'npx rapidkit my-api --template nestjs'
     },
     {
       step: '2',
       title: 'Navigate to Directory',
-      demo: 'cd my-workspace',
-      full: 'cd my-workspace'
+      fastapi: 'cd my-api',
+      nestjs: 'cd my-api'
     },
     {
       step: '3',
-      title: 'Generate Project',
-      demo: 'node generate-demo.js api-service',
-      full: 'rapidkit create api-service'
+      title: 'Initialize',
+      fastapi: 'rapidkit init',
+      nestjs: 'rapidkit init'
     },
     {
       step: '4',
-      title: 'Install & Run',
-      demo: 'cd api-service && poetry install && poetry run dev',
-      full: 'cd api-service && rapidkit run dev'
+      title: 'Start Development',
+      fastapi: 'rapidkit dev',
+      nestjs: 'rapidkit dev'
     }
   ];
 
@@ -165,18 +165,18 @@ export function RapidKitNpmContent() {
         >
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-red-50 dark:bg-red-950 rounded-full text-sm font-medium text-red-700 dark:text-red-300">
             <SiNpm className="w-4 h-4" />
-            NPM Package v0.10.1
+            NPM Package v0.12.3 - Smart CLI Delegation
           </div>
           
           <h1 className="text-5xl md:text-7xl font-bold font-outfit">
             <span className="bg-gradient-to-r from-red-600 to-pink-600 bg-clip-text text-transparent">
-              create-rapidkit
+              RapidKit CLI
             </span>
           </h1>
           
           <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed">
-            The fastest way to create production-ready FastAPI and NestJS workspaces. 
-            Demo mode with bundled templates available now - no complex setup required.
+            The fastest way to create production-ready FastAPI and NestJS projects. 
+            Smart CLI Delegation automatically routes to the best creation method.
           </p>
 
           {/* Install Command */}
@@ -245,10 +245,10 @@ export function RapidKitNpmContent() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold font-outfit mb-4">
-            Two Ways to Use
+            Choose Your Framework
           </h2>
           <p className="text-xl text-gray-600 dark:text-gray-400">
-            Choose the mode that fits your needs
+            Smart CLI Delegation routes to the best creation method
           </p>
         </motion.div>
 
@@ -265,9 +265,9 @@ export function RapidKitNpmContent() {
               <div className="flex items-center justify-between">
                 <h3 className="text-2xl font-bold font-outfit">{mode.title}</h3>
                 <span className={`px-3 py-1 rounded-full text-xs font-medium ${
-                  mode.badge === 'Available Now' 
+                  mode.badge === 'Python' 
                     ? 'bg-green-100 dark:bg-green-950 text-green-700 dark:text-green-300'
-                    : 'bg-yellow-100 dark:bg-yellow-950 text-yellow-700 dark:text-yellow-300'
+                    : 'bg-blue-100 dark:bg-blue-950 text-blue-700 dark:text-blue-300'
                 }`}>
                   {mode.badge}
                 </span>
@@ -367,8 +367,8 @@ export function RapidKitNpmContent() {
             <thead>
               <tr className="border-b border-gray-200 dark:border-gray-800">
                 <th className="text-left p-4 font-outfit text-gray-900 dark:text-white">Step</th>
-                <th className="text-left p-4 font-outfit text-gray-900 dark:text-white">Demo Mode</th>
-                <th className="text-left p-4 font-outfit text-gray-900 dark:text-white">Full Mode</th>
+                <th className="text-left p-4 font-outfit text-gray-900 dark:text-white">FastAPI</th>
+                <th className="text-left p-4 font-outfit text-gray-900 dark:text-white">NestJS</th>
               </tr>
             </thead>
             <tbody>
@@ -391,12 +391,12 @@ export function RapidKitNpmContent() {
                   </td>
                   <td className="p-4">
                     <code className="text-sm font-mono text-green-600 dark:text-green-400">
-                      {row.demo}
+                      {row.fastapi}
                     </code>
                   </td>
                   <td className="p-4">
                     <code className="text-sm font-mono text-blue-600 dark:text-blue-400">
-                      {row.full}
+                      {row.nestjs}
                     </code>
                   </td>
                 </motion.tr>
@@ -418,12 +418,12 @@ export function RapidKitNpmContent() {
             Start Building Today
           </h2>
           <p className="text-xl text-gray-600 dark:text-gray-400">
-            Create your first RapidKit workspace in seconds
+            Create your first RapidKit project in seconds
           </p>
           
           <div className="flex flex-col gap-4">
             <code className="px-6 py-4 bg-gray-900 dark:bg-black text-green-400 rounded-lg font-mono text-lg">
-              npx rapidkit my-workspace --demo
+              npx rapidkit my-api --template fastapi
             </code>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
