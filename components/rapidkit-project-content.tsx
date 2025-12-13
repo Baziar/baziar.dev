@@ -24,11 +24,35 @@ import { SiNpm, SiFastapi, SiNestjs, SiPython, SiTypescript } from 'react-icons/
 import { VscVscode } from 'react-icons/vsc';
 import Link from 'next/link';
 import Image from 'next/image';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+
+interface Versions {
+  npm: string;
+  vscode: string;
+  updatedAt: string;
+}
 
 export function RapidKitProjectContent() {
   const [copied, setCopied] = useState(false);
+  const [versions, setVersions] = useState<Versions>({
+    npm: '0.12.3',
+    vscode: '0.4.1',
+    updatedAt: new Date().toISOString(),
+  });
   const installCommand = 'npx rapidkit my-api --template fastapi';
+
+  useEffect(() => {
+    // Fetch versions on mount
+    fetch('/api/rapidkit-versions')
+      .then((res) => res.json())
+      .then((data: Versions) => {
+        setVersions(data);
+      })
+      .catch((error) => {
+        console.error('Failed to fetch versions:', error);
+        // Keep fallback versions
+      });
+  }, []);
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(installCommand);
@@ -97,7 +121,7 @@ export function RapidKitProjectContent() {
       href: 'https://npmjs.com/package/rapidkit',
       icon: <SiNpm className="w-6 h-6" />,
       color: 'bg-[#CB3837]',
-      badge: 'v0.12.3'
+      badge: `v${versions.npm}`
     },
     {
       title: 'VS Code Extension',
@@ -105,7 +129,7 @@ export function RapidKitProjectContent() {
       href: 'https://marketplace.visualstudio.com/items?itemName=rapidkit.rapidkit-vscode',
       icon: <VscVscode className="w-6 h-6" />,
       color: 'bg-[#007ACC]',
-      badge: 'v0.4.1'
+      badge: `v${versions.vscode}`
     },
     {
       title: 'GitHub Repository',

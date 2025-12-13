@@ -13,6 +13,7 @@ interface Project {
   link: string;
   tags: string[];
   icon?: string;
+  version?: string;
 }
 
 interface ProjectsGridProps {
@@ -73,7 +74,14 @@ export function ProjectsGrid({ projects }: ProjectsGridProps) {
               <div className="p-2 bg-gray-100 dark:bg-gray-900 rounded-lg flex items-center justify-center">
                 {getIcon(project.icon)}
               </div>
-              <ExternalLink className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" />
+              <div className="flex items-center gap-2">
+                {project.version && (
+                  <span className="px-2 py-0.5 text-xs font-mono bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 rounded">
+                    v{project.version}
+                  </span>
+                )}
+                <ExternalLink className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" />
+              </div>
             </div>
 
             <div>

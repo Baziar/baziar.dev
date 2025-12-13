@@ -44,7 +44,24 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RapidKitPage() {
+async function getLatestVersion() {
+  try {
+    const res = await fetch('https://registry.npmjs.org/rapidkit', {
+      next: { revalidate: 3600 }, // Cache for 1 hour
+    });
+    if (res.ok) {
+      const data = await res.json();
+      return data['dist-tags']?.latest || '0.12.3';
+    }
+  } catch (error) {
+    console.error('Failed to fetch NPM version:', error);
+  }
+  return '0.12.3'; // Fallback
+}
+
+export default async function RapidKitPage() {
+  const version = await getLatestVersion();
+  
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
@@ -63,7 +80,7 @@ export default function RapidKitPage() {
     },
     "description": "Open-source framework that helps developers build, scale, and deploy production-ready FastAPI and NestJS projects faster",
     "downloadUrl": "https://www.npmjs.com/package/rapidkit",
-    "softwareVersion": "0.12.3",
+    "softwareVersion": version,
     "featureList": [
       "27+ Production-ready Modules",
       "FastAPI & NestJS Support",

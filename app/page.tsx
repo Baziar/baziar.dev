@@ -15,7 +15,24 @@ export const metadata: Metadata = {
   description: 'Full-stack developer specializing in TypeScript, Python, React, and Next.js. Creator of RapidKit framework.',
 };
 
-export default function Home() {
+async function getVersions() {
+  try {
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
+    const res = await fetch(`${baseUrl}/api/rapidkit-versions`, {
+      next: { revalidate: 3600 },
+    });
+    if (res.ok) {
+      return await res.json();
+    }
+  } catch (error) {
+    console.error('Failed to fetch versions:', error);
+  }
+  return { npm: '0.12.3', vscode: '0.4.1' };
+}
+
+export default async function Home() {
+  const versions = await getVersions();
+  
   const skills = [
     'TypeScript', 'Python', 'React', 'Next.js', 'Node.js',
     'FastAPI', 'NestJS', 'PostgreSQL', 'Docker', 'Git',
@@ -28,6 +45,7 @@ export default function Home() {
       link: '/rapidkit',
       tags: ['TypeScript', 'Python', 'Framework', 'Open Source'],
       icon: 'rapidkit',
+      version: '0.1.0 Alpha',
     },
     {
       title: 'RapidKit VS Code',
@@ -35,6 +53,7 @@ export default function Home() {
       link: '/rapidkit-vscode',
       tags: ['VS Code', 'TypeScript', 'Extension'],
       icon: 'vscode',
+      version: versions.vscode,
     },
     {
       title: 'RapidKit CLI',
@@ -42,6 +61,7 @@ export default function Home() {
       link: '/rapidkit-npm',
       tags: ['NPM', 'CLI', 'Node.js'],
       icon: 'npm',
+      version: versions.npm,
     },
   ];
 
