@@ -5,7 +5,8 @@ import { ScrollToTop } from '@/components/scroll-to-top';
 
 export const metadata: Metadata = {
   title: 'RapidKit | Open-Source Framework for FastAPI & NestJS',
-  description: 'RapidKit is an open-source framework that helps developers build, scale, and deploy production-ready FastAPI and NestJS projects faster. 27+ modules, 40+ CLI commands, and zero configuration.',
+  description:
+    'RapidKit is an open-source framework that helps developers build, scale, and deploy production-ready FastAPI and NestJS projects faster. 27+ modules, 40+ CLI commands, and zero configuration.',
   keywords: [
     'RapidKit',
     'FastAPI',
@@ -22,7 +23,8 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     title: 'RapidKit - Build Modern Backends at Warp Speed',
-    description: 'Open-source framework for generating production-ready FastAPI & NestJS projects. Clean architecture, modular design, and automation-first workflows.',
+    description:
+      'Open-source framework for generating production-ready FastAPI & NestJS projects. Clean architecture, modular design, and automation-first workflows.',
     type: 'website',
     url: 'https://baziar.dev/rapidkit',
     images: [
@@ -61,37 +63,38 @@ async function getLatestVersion() {
 
 export default async function RapidKitPage() {
   const version = await getLatestVersion();
-  
+
   const structuredData = {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "RapidKit",
-    "applicationCategory": "DeveloperApplication",
-    "operatingSystem": "Cross-platform",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "USD"
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareApplication',
+    name: 'RapidKit',
+    applicationCategory: 'DeveloperApplication',
+    operatingSystem: 'Cross-platform',
+    offers: {
+      '@type': 'Offer',
+      price: '0',
+      priceCurrency: 'USD',
     },
-    "author": {
-      "@type": "Person",
-      "name": "Morteza Baziar",
-      "url": "https://baziar.dev"
+    author: {
+      '@type': 'Person',
+      name: 'Morteza Baziar',
+      url: 'https://baziar.dev',
     },
-    "description": "Open-source framework that helps developers build, scale, and deploy production-ready FastAPI and NestJS projects faster",
-    "downloadUrl": "https://www.npmjs.com/package/rapidkit",
-    "softwareVersion": version,
-    "featureList": [
-      "27+ Production-ready Modules",
-      "FastAPI & NestJS Support",
-      "40+ CLI Commands",
-      "Zero Configuration",
-      "Clean Architecture (DDD)",
-      "Full TypeScript Support"
+    description:
+      'Open-source framework that helps developers build, scale, and deploy production-ready FastAPI and NestJS projects faster',
+    downloadUrl: 'https://www.npmjs.com/package/rapidkit',
+    softwareVersion: version,
+    featureList: [
+      '27+ Production-ready Modules',
+      'FastAPI & NestJS Support',
+      '40+ CLI Commands',
+      'Zero Configuration',
+      'Clean Architecture (DDD)',
+      'Full TypeScript Support',
     ],
-    "programmingLanguage": ["Python", "TypeScript"],
-    "isAccessibleForFree": true,
-    "license": "https://github.com/getrapidkit/community/blob/main/LICENSE"
+    programmingLanguage: ['Python', 'TypeScript'],
+    isAccessibleForFree: true,
+    license: 'https://github.com/getrapidkit/community/blob/main/LICENSE',
   };
 
   return (

@@ -5,7 +5,8 @@ import { ScrollToTop } from '@/components/scroll-to-top';
 
 export const metadata: Metadata = {
   title: 'RapidKit CLI | NPM Package for FastAPI & NestJS Projects',
-  description: 'Create production-ready FastAPI and NestJS projects in seconds with RapidKit CLI. Smart CLI Delegation automatically routes to the best creation method.',
+  description:
+    'Create production-ready FastAPI and NestJS projects in seconds with RapidKit CLI. Smart CLI Delegation automatically routes to the best creation method.',
   keywords: [
     'rapidkit cli',
     'rapidkit npm',
@@ -20,7 +21,8 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     title: 'RapidKit CLI - Fast & Easy Backend Project Generator',
-    description: 'Create FastAPI and NestJS projects instantly with Smart CLI Delegation. The fastest way to start production-ready backends.',
+    description:
+      'Create FastAPI and NestJS projects instantly with Smart CLI Delegation. The fastest way to start production-ready backends.',
     type: 'website',
     url: 'https://baziar.dev/rapidkit-npm',
   },
@@ -34,28 +36,46 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RapidKitNpmPage() {
+async function getNpmVersion() {
+  try {
+    const res = await fetch('https://registry.npmjs.org/rapidkit', {
+      next: { revalidate: 3600 },
+    });
+    if (res.ok) {
+      const data = await res.json();
+      return data['dist-tags']?.latest || '0.12.3';
+    }
+  } catch (error) {
+    console.error('Failed to fetch NPM version:', error);
+  }
+  return '0.12.3';
+}
+
+export default async function RapidKitNpmPage() {
+  const version = await getNpmVersion();
+
   const structuredData = {
-    "@context": "https://schema.org",
-    "@type": "SoftwareSourceCode",
-    "name": "RapidKit CLI",
-    "description": "NPM package for creating production-ready FastAPI and NestJS projects with Smart CLI Delegation",
-    "codeRepository": "https://github.com/getrapidkit/rapidkit-npm",
-    "programmingLanguage": "TypeScript",
-    "runtimePlatform": "Node.js",
-    "author": {
-      "@type": "Person",
-      "name": "Morteza Baziar",
-      "url": "https://baziar.dev"
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareSourceCode',
+    name: 'RapidKit CLI',
+    description:
+      'NPM package for creating production-ready FastAPI and NestJS projects with Smart CLI Delegation',
+    codeRepository: 'https://github.com/getrapidkit/rapidkit-npm',
+    programmingLanguage: 'TypeScript',
+    runtimePlatform: 'Node.js',
+    author: {
+      '@type': 'Person',
+      name: 'Morteza Baziar',
+      url: 'https://baziar.dev',
     },
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "USD"
+    offers: {
+      '@type': 'Offer',
+      price: '0',
+      priceCurrency: 'USD',
     },
-    "version": "0.12.3",
-    "datePublished": "2025-12-04",
-    "downloadUrl": "https://www.npmjs.com/package/rapidkit"
+    version: version,
+    datePublished: '2025-12-04',
+    downloadUrl: 'https://www.npmjs.com/package/rapidkit',
   };
 
   return (
@@ -66,7 +86,7 @@ export default function RapidKitNpmPage() {
       />
       <div className="min-h-screen bg-white dark:bg-black text-gray-900 dark:text-white">
         <Navigation />
-        <RapidKitNpmContent />
+        <RapidKitNpmContent version={version} />
         <ScrollToTop />
       </div>
     </>

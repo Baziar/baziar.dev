@@ -1,0 +1,4 @@
+echo "🔍 Running formatters..."
+npx prettier --write --ignore-unknown .
+
+echo "✅ Pre-commit checks passed!"

@@ -29,18 +29,43 @@ export function Navigation() {
           {/* Subtle glow effect - darker for light mode, lighter for dark mode */}
           <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-xl bg-gradient-to-r from-blue-600/40 via-purple-600/40 to-transparent dark:from-blue-400/20 dark:via-purple-400/20 dark:to-transparent -z-10 pointer-events-none" />
         </motion.a>
-        
+
         {/* Desktop Navigation */}
         <motion.div
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
           className="hidden md:flex gap-6 items-center"
         >
-          <a href="/#about" className="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors">About</a>
-          <a href="/#skills" className="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors">Skills</a>
-          <a href="/#projects" className="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors">Projects</a>
-          <a href="/resume" className="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors">Resume</a>
-          <a href="/#contact" className="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors">Contact</a>
+          <a
+            href="/#about"
+            className="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors"
+          >
+            About
+          </a>
+          <a
+            href="/#skills"
+            className="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors"
+          >
+            Skills
+          </a>
+          <a
+            href="/#projects"
+            className="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors"
+          >
+            Projects
+          </a>
+          <a
+            href="/resume"
+            className="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors"
+          >
+            Resume
+          </a>
+          <a
+            href="/#contact"
+            className="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors"
+          >
+            Contact
+          </a>
           <ThemeToggle />
         </motion.div>
 

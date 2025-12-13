@@ -30,13 +30,7 @@ export function ProjectsGrid({ projects }: ProjectsGridProps) {
     }
     if (iconName === 'rapidkit') {
       return (
-        <Image 
-          src="/RapidKit.png" 
-          alt="RapidKit" 
-          width={32} 
-          height={32}
-          className="w-8 h-8"
-        />
+        <Image src="/RapidKit.png" alt="RapidKit" width={32} height={32} className="w-8 h-8" />
       );
     }
     return <Zap className="w-5 h-5" />;
@@ -51,11 +45,11 @@ export function ProjectsGrid({ projects }: ProjectsGridProps) {
       {projects.map((project, idx) => {
         const external = isExternalLink(project.link);
         const Component = external ? motion.a : motion(Link);
-        const linkProps = external 
-          ? { 
-              href: project.link, 
-              target: "_blank", 
-              rel: "noopener noreferrer" 
+        const linkProps = external
+          ? {
+              href: project.link,
+              target: '_blank',
+              rel: 'noopener noreferrer',
             }
           : { href: project.link };
 

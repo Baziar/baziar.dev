@@ -14,7 +14,7 @@ const fadeIn = {
 export function HeroSection() {
   const [typedText, setTypedText] = useState('');
   const fullText = 'Full-Stack Developer & Open Source Enthusiast';
-  
+
   useEffect(() => {
     let index = 0;
     const timer = setInterval(() => {
@@ -40,7 +40,7 @@ export function HeroSection() {
           <motion.div
             className="absolute -inset-2 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-full opacity-30 blur-lg"
             animate={{ rotate: 360 }}
-            transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
+            transition={{ duration: 8, repeat: Infinity, ease: 'linear' }}
           />
           <Image
             src="/baziar-avatar.png"
@@ -62,7 +62,7 @@ export function HeroSection() {
             />
             <span>Available for new opportunities</span>
           </div>
-          
+
           <div>
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-gray-900 dark:text-white font-outfit">
               <motion.span
@@ -72,8 +72,7 @@ export function HeroSection() {
                 className="inline-block"
               >
                 Morteza
-              </motion.span>
-              {' '}
+              </motion.span>{' '}
               <motion.span
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -83,7 +82,7 @@ export function HeroSection() {
                 Baziar
               </motion.span>
             </h1>
-            
+
             <p className="text-lg sm:text-xl md:text-2xl text-gray-600 dark:text-gray-400 mt-2 min-h-[2rem] flex items-center justify-center md:justify-start">
               <Terminal className="w-5 h-5 mr-2 text-blue-500" />
               <span>{typedText}</span>
@@ -94,7 +93,7 @@ export function HeroSection() {
               />
             </p>
           </div>
-          
+
           <p className="text-base sm:text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
             Building scalable applications and developer tools. Creator of RapidKit framework.
             Passionate about TypeScript, Python, and creating exceptional developer experiences.
@@ -112,7 +111,7 @@ export function HeroSection() {
               <Github className="w-5 h-5" />
               GitHub
             </motion.a>
-            
+
             <motion.a
               whileHover={{ scale: 1.05, boxShadow: '0 10px 25px rgba(0,0,0,0.1)' }}
               whileTap={{ scale: 0.95 }}
@@ -124,7 +123,7 @@ export function HeroSection() {
               <Linkedin className="w-5 h-5" />
               LinkedIn
             </motion.a>
-            
+
             <motion.a
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}

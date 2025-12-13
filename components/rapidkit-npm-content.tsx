@@ -1,12 +1,12 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { 
-  Terminal, 
-  Zap, 
-  Package, 
-  Rocket, 
-  CheckCircle, 
+import {
+  Terminal,
+  Zap,
+  Package,
+  Rocket,
+  CheckCircle,
   Code2,
   Layers,
   GitBranch,
@@ -14,14 +14,18 @@ import {
   Github,
   ExternalLink,
   ArrowRight,
-  Copy
+  Copy,
 } from 'lucide-react';
 import { SiNpm } from 'react-icons/si';
 import Link from 'next/link';
 import { useState } from 'react';
 import { LiveStats } from './live-stats';
 
-export function RapidKitNpmContent() {
+interface RapidKitNpmContentProps {
+  version?: string;
+}
+
+export function RapidKitNpmContent({ version = '0.12.3' }: RapidKitNpmContentProps) {
   const [copied, setCopied] = useState(false);
   const installCommand = 'npx rapidkit my-api --template fastapi';
 
@@ -40,8 +44,8 @@ export function RapidKitNpmContent() {
         'Auto-detects Python RapidKit installation',
         'Seamless transition between modes',
         'One command for all scenarios',
-        'Enhanced developer experience'
-      ]
+        'Enhanced developer experience',
+      ],
     },
     {
       icon: <Layers className="w-6 h-6" />,
@@ -51,8 +55,8 @@ export function RapidKitNpmContent() {
         'npx rapidkit project-name --template fastapi',
         'npx rapidkit project-name --template nestjs',
         'Interactive framework selection',
-        'Workspace architecture support'
-      ]
+        'Workspace architecture support',
+      ],
     },
     {
       icon: <Package className="w-6 h-6" />,
@@ -62,8 +66,8 @@ export function RapidKitNpmContent() {
         'Poetry (recommended)',
         'Python venv + pip',
         'pipx (global install)',
-        'Interactive selection'
-      ]
+        'Interactive selection',
+      ],
     },
     {
       icon: <GitBranch className="w-6 h-6" />,
@@ -73,8 +77,8 @@ export function RapidKitNpmContent() {
         'fastapi-standard - Full features',
         'fastapi-ddd - Domain-driven design',
         'nestjs-standard - TypeScript ready',
-        'More templates coming soon'
-      ]
+        'More templates coming soon',
+      ],
     },
     {
       icon: <Code2 className="w-6 h-6" />,
@@ -84,8 +88,8 @@ export function RapidKitNpmContent() {
         'Interactive CLI prompts',
         'Debug mode available',
         'Dry-run preview',
-        'Auto-update checks'
-      ]
+        'Auto-update checks',
+      ],
     },
     {
       icon: <Zap className="w-6 h-6" />,
@@ -95,9 +99,9 @@ export function RapidKitNpmContent() {
         '40KB bundle size (80% reduction)',
         'Built with tsup + esbuild',
         'Tree-shaking enabled',
-        'Zero bloat dependencies'
-      ]
-    }
+        'Zero bloat dependencies',
+      ],
+    },
   ];
 
   const usageModes = [
@@ -110,8 +114,8 @@ export function RapidKitNpmContent() {
         'Smart CLI Delegation to Python RapidKit',
         'Access 27+ production modules',
         'DDD architecture out of the box',
-        'Full CLI command support'
-      ]
+        'Full CLI command support',
+      ],
     },
     {
       title: 'NestJS Project',
@@ -122,9 +126,9 @@ export function RapidKitNpmContent() {
         'TypeScript-first development',
         'Modular architecture',
         'Enterprise patterns included',
-        'Full CLI command support'
-      ]
-    }
+        'Full CLI command support',
+      ],
+    },
   ];
 
   const workflow = [
@@ -132,26 +136,26 @@ export function RapidKitNpmContent() {
       step: '1',
       title: 'Create Project',
       fastapi: 'npx rapidkit my-api --template fastapi',
-      nestjs: 'npx rapidkit my-api --template nestjs'
+      nestjs: 'npx rapidkit my-api --template nestjs',
     },
     {
       step: '2',
       title: 'Navigate to Directory',
       fastapi: 'cd my-api',
-      nestjs: 'cd my-api'
+      nestjs: 'cd my-api',
     },
     {
       step: '3',
       title: 'Initialize',
       fastapi: 'rapidkit init',
-      nestjs: 'rapidkit init'
+      nestjs: 'rapidkit init',
     },
     {
       step: '4',
       title: 'Start Development',
       fastapi: 'rapidkit dev',
-      nestjs: 'rapidkit dev'
-    }
+      nestjs: 'rapidkit dev',
+    },
   ];
 
   return (
@@ -165,18 +169,18 @@ export function RapidKitNpmContent() {
         >
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-red-50 dark:bg-red-950 rounded-full text-sm font-medium text-red-700 dark:text-red-300">
             <SiNpm className="w-4 h-4" />
-            NPM Package v0.12.3 - Smart CLI Delegation
+            NPM Package v{version} - Smart CLI Delegation
           </div>
-          
+
           <h1 className="text-5xl md:text-7xl font-bold font-outfit">
             <span className="bg-gradient-to-r from-red-600 to-pink-600 bg-clip-text text-transparent">
               RapidKit CLI
             </span>
           </h1>
-          
+
           <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed">
-            The fastest way to create production-ready FastAPI and NestJS projects. 
-            Smart CLI Delegation automatically routes to the best creation method.
+            The fastest way to create production-ready FastAPI and NestJS projects. Smart CLI
+            Delegation automatically routes to the best creation method.
           </p>
 
           {/* Install Command */}
@@ -216,7 +220,7 @@ export function RapidKitNpmContent() {
               View on NPM
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </a>
-            
+
             <a
               href="https://github.com/getrapidkit/rapidkit-npm"
               target="_blank"
@@ -244,9 +248,7 @@ export function RapidKitNpmContent() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold font-outfit mb-4">
-            Choose Your Framework
-          </h2>
+          <h2 className="text-4xl md:text-5xl font-bold font-outfit mb-4">Choose Your Framework</h2>
           <p className="text-xl text-gray-600 dark:text-gray-400">
             Smart CLI Delegation routes to the best creation method
           </p>
@@ -264,18 +266,18 @@ export function RapidKitNpmContent() {
             >
               <div className="flex items-center justify-between">
                 <h3 className="text-2xl font-bold font-outfit">{mode.title}</h3>
-                <span className={`px-3 py-1 rounded-full text-xs font-medium ${
-                  mode.badge === 'Python' 
-                    ? 'bg-green-100 dark:bg-green-950 text-green-700 dark:text-green-300'
-                    : 'bg-blue-100 dark:bg-blue-950 text-blue-700 dark:text-blue-300'
-                }`}>
+                <span
+                  className={`px-3 py-1 rounded-full text-xs font-medium ${
+                    mode.badge === 'Python'
+                      ? 'bg-green-100 dark:bg-green-950 text-green-700 dark:text-green-300'
+                      : 'bg-blue-100 dark:bg-blue-950 text-blue-700 dark:text-blue-300'
+                  }`}
+                >
                   {mode.badge}
                 </span>
               </div>
 
-              <p className="text-gray-600 dark:text-gray-400">
-                {mode.description}
-              </p>
+              <p className="text-gray-600 dark:text-gray-400">{mode.description}</p>
 
               <code className="block px-4 py-3 bg-gray-100 dark:bg-gray-900 rounded text-sm font-mono text-red-600 dark:text-red-400">
                 {mode.command}
@@ -302,9 +304,7 @@ export function RapidKitNpmContent() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold font-outfit mb-4">
-            Powerful Features
-          </h2>
+          <h2 className="text-4xl md:text-5xl font-bold font-outfit mb-4">Powerful Features</h2>
           <p className="text-xl text-gray-600 dark:text-gray-400">
             Everything you need to start building
           </p>
@@ -323,11 +323,9 @@ export function RapidKitNpmContent() {
               <div className="w-12 h-12 bg-red-100 dark:bg-red-950 rounded-lg flex items-center justify-center text-red-600 dark:text-red-400 group-hover:scale-110 transition-transform">
                 {feature.icon}
               </div>
-              
+
               <div>
-                <h3 className="text-xl font-semibold mb-2 font-outfit">
-                  {feature.title}
-                </h3>
+                <h3 className="text-xl font-semibold mb-2 font-outfit">{feature.title}</h3>
                 <p className="text-gray-600 dark:text-gray-400 text-sm mb-4">
                   {feature.description}
                 </p>
@@ -335,7 +333,10 @@ export function RapidKitNpmContent() {
 
               <ul className="space-y-2">
                 {feature.items.map((item) => (
-                  <li key={item} className="flex items-start gap-2 text-sm text-gray-600 dark:text-gray-400">
+                  <li
+                    key={item}
+                    className="flex items-start gap-2 text-sm text-gray-600 dark:text-gray-400"
+                  >
                     <CheckCircle className="w-4 h-4 text-green-600 dark:text-green-400 mt-0.5 flex-shrink-0" />
                     {item}
                   </li>
@@ -354,9 +355,7 @@ export function RapidKitNpmContent() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold font-outfit mb-4">
-            Typical Workflow
-          </h2>
+          <h2 className="text-4xl md:text-5xl font-bold font-outfit mb-4">Typical Workflow</h2>
           <p className="text-xl text-gray-600 dark:text-gray-400">
             From workspace to running project in 4 steps
           </p>
@@ -414,18 +413,16 @@ export function RapidKitNpmContent() {
           viewport={{ once: true }}
           className="space-y-8 p-12 border border-gray-200 dark:border-gray-800 rounded-2xl bg-gradient-to-br from-red-50 to-pink-50 dark:from-red-950 dark:to-pink-950"
         >
-          <h2 className="text-4xl md:text-5xl font-bold font-outfit">
-            Start Building Today
-          </h2>
+          <h2 className="text-4xl md:text-5xl font-bold font-outfit">Start Building Today</h2>
           <p className="text-xl text-gray-600 dark:text-gray-400">
             Create your first RapidKit project in seconds
           </p>
-          
+
           <div className="flex flex-col gap-4">
             <code className="px-6 py-4 bg-gray-900 dark:bg-black text-green-400 rounded-lg font-mono text-lg">
               npx rapidkit my-api --template fastapi
             </code>
-            
+
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
                 href="https://www.npmjs.com/package/rapidkit"
@@ -436,7 +433,7 @@ export function RapidKitNpmContent() {
                 <SiNpm className="w-5 h-5" />
                 View Package
               </a>
-              
+
               <Link
                 href="/"
                 className="px-8 py-4 border border-gray-300 dark:border-gray-700 hover:border-gray-400 dark:hover:border-gray-600 rounded-lg font-medium transition-all flex items-center justify-center gap-2"

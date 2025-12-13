@@ -47,7 +47,9 @@ export function setupPerformanceObserver() {
       const perfData = performance.getEntriesByType('navigation')[0] as any;
       if (perfData) {
         console.log('Page Load Metrics:', {
-          domContentLoaded: Math.round(perfData.domContentLoadedEventEnd - perfData.domContentLoadedEventStart),
+          domContentLoaded: Math.round(
+            perfData.domContentLoadedEventEnd - perfData.domContentLoadedEventStart
+          ),
           loadComplete: Math.round(perfData.loadEventEnd - perfData.loadEventStart),
           domInteractive: Math.round(perfData.domInteractive - perfData.fetchStart),
         });

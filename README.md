@@ -7,12 +7,14 @@ A modern, responsive personal portfolio website for Morteza Baziar, a full-stack
 ## Features
 
 ✨ **Modern Design**
+
 - Responsive layout that works on all devices
 - Beautiful gradient animations and smooth transitions
 - Dark/Light mode toggle with smooth theme switching
 - Professional typography with Outfit font for headings
 
 🚀 **Performance Optimized**
+
 - Built with Next.js 16 and Turbopack
 - Optimized images with Next.js Image component
 - Lazy loading for projects section
@@ -21,12 +23,14 @@ A modern, responsive personal portfolio website for Morteza Baziar, a full-stack
 - ~90+ Lighthouse score
 
 📱 **Mobile First**
+
 - Hamburger navigation menu on mobile
 - Responsive typography and spacing
 - Touch-friendly interactive elements
 - Optimized for all screen sizes
 
 🔍 **SEO Optimized**
+
 - JSON-LD structured data (Person schema)
 - Dynamic sitemap.xml
 - robots.txt configuration
@@ -34,6 +38,7 @@ A modern, responsive personal portfolio website for Morteza Baziar, a full-stack
 - Open Graph and Twitter card support
 
 🎨 **Components**
+
 - Animated Hero Section with gradient text
 - About Section with tech stack showcase
 - Projects Grid with hover effects
@@ -43,6 +48,7 @@ A modern, responsive personal portfolio website for Morteza Baziar, a full-stack
 ## Tech Stack
 
 **Frontend:**
+
 - Next.js 16.0.1 (with Turbopack)
 - React 19.2.0
 - TypeScript
@@ -51,13 +57,15 @@ A modern, responsive personal portfolio website for Morteza Baziar, a full-stack
 - Lucide React (icons)
 
 **Fonts:**
+
 - Inter (body text)
 - Outfit (headings)
 
 ## Getting Started
 
 ### Prerequisites
-- Node.js 18+ 
+
+- Node.js 18+
 - npm or yarn
 
 ### Installation
@@ -68,22 +76,49 @@ git clone https://github.com/Baziar/baziar.dev.git
 cd baziar-dev
 
 # Install dependencies
-npm install
+yarn install
 
 # Start development server
-npm run dev
+yarn dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-### Build for Production
+### Available Scripts
 
 ```bash
-# Create production build
-npm run build
+yarn dev          # Start development server
+yarn build        # Create production build
+yarn start        # Start production server
+yarn lint         # Run ESLint
+yarn lint:fix     # Run ESLint and auto-fix issues
+yarn format       # Format code with Prettier
+yarn format:check # Check code formatting
+yarn type-check   # Run TypeScript type checking
+```
 
-# Start production server
-npm run start
+### Git Workflow & Quality Checks
+
+This project uses **Husky** and **lint-staged** to ensure code quality:
+
+**Pre-commit Hook:**
+
+- ✅ Auto-formats code with Prettier
+- ✅ Runs ESLint and fixes issues
+- ✅ Checks only staged files (fast!)
+
+**Pre-push Hook:**
+
+- ✅ Runs full production build
+- ✅ Ensures no build errors before push
+- ✅ Prevents broken deployments
+
+**To commit changes:**
+
+```bash
+git add .
+git commit -m "feat: your changes"  # Triggers lint-staged
+git push                             # Triggers build check
 ```
 
 ## Project Structure
@@ -150,6 +185,7 @@ baziar-dev/
 ## Author
 
 **Morteza Baziar**
+
 - Website: https://baziar.dev
 - GitHub: https://github.com/Baziar
 - LinkedIn: https://linkedin.com/in/baziar

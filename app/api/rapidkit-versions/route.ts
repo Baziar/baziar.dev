@@ -23,30 +23,27 @@ export async function GET() {
         next: { revalidate: 3600 },
       }),
       // Fetch VS Code extension version
-      fetch(
-        'https://marketplace.visualstudio.com/_apis/public/gallery/extensionquery',
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            Accept: 'application/json;api-version=3.0-preview.1',
-          },
-          body: JSON.stringify({
-            filters: [
-              {
-                criteria: [
-                  {
-                    filterType: 7,
-                    value: 'rapidkit.rapidkit-vscode',
-                  },
-                ],
-              },
-            ],
-            flags: 914,
-          }),
-          next: { revalidate: 3600 },
-        }
-      ),
+      fetch('https://marketplace.visualstudio.com/_apis/public/gallery/extensionquery', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json;api-version=3.0-preview.1',
+        },
+        body: JSON.stringify({
+          filters: [
+            {
+              criteria: [
+                {
+                  filterType: 7,
+                  value: 'rapidkit.rapidkit-vscode',
+                },
+              ],
+            },
+          ],
+          flags: 914,
+        }),
+        next: { revalidate: 3600 },
+      }),
     ]);
 
     let npmVersion = '0.12.3'; // Fallback
@@ -60,8 +57,8 @@ export async function GET() {
 
     // Parse VS Code version
     if (vscodeRes.ok) {
-      const vscodeData: VSCodeResponse = await vscodeRes.json();
-      const extensionData = (vscodeData as any).results?.[0]?.extensions?.[0];
+      const vscodeData = await vscodeRes.json();
+      const extensionData = vscodeData.results?.[0]?.extensions?.[0];
       if (extensionData?.versions?.[0]?.version) {
         vscodeVersion = extensionData.versions[0].version;
       }
@@ -74,7 +71,7 @@ export async function GET() {
     });
   } catch (error) {
     console.error('Error fetching RapidKit versions:', error);
-    
+
     // Return fallback versions on error
     return NextResponse.json({
       npm: '0.12.3',

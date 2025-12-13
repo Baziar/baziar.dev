@@ -4,7 +4,8 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Resume | Morteza Baziar - Full-Stack Developer',
-  description: 'Full-stack developer with 9+ years of experience. Creator of RapidKit framework. Specializing in TypeScript, Python, React, Next.js, FastAPI, and NestJS.',
+  description:
+    'Full-stack developer with 9+ years of experience. Creator of RapidKit framework. Specializing in TypeScript, Python, React, Next.js, FastAPI, and NestJS.',
   keywords: [
     'Morteza Baziar resume',
     'Full-Stack Developer',
@@ -17,7 +18,8 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     title: 'Resume - Morteza Baziar | Full-Stack Developer',
-    description: 'Full-stack developer with 9+ years of experience building scalable applications and developer tools.',
+    description:
+      'Full-stack developer with 9+ years of experience building scalable applications and developer tools.',
     type: 'profile',
     url: 'https://baziar.dev/resume',
   },

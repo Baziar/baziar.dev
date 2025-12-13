@@ -1,31 +1,57 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Download, Briefcase, Code2, Rocket, Globe, Github, Linkedin, Mail, MapPin, Calendar, Users, MessageSquare, Lightbulb, Target, CheckCircle, ExternalLink } from 'lucide-react';
+import {
+  Download,
+  Briefcase,
+  Code2,
+  Rocket,
+  Globe,
+  Github,
+  Linkedin,
+  Mail,
+  MapPin,
+  Calendar,
+  Users,
+  MessageSquare,
+  Lightbulb,
+  Target,
+  CheckCircle,
+  ExternalLink,
+} from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { VscVscode } from 'react-icons/vsc';
 import { SiNpm } from 'react-icons/si';
-import { 
-  SiTypescript, SiPython, SiReact, SiNextdotjs, SiNodedotjs,
-  SiFastapi, SiNestjs, SiPostgresql, SiDocker, SiGit,
-  SiTailwindcss, SiJavascript
+import {
+  SiTypescript,
+  SiPython,
+  SiReact,
+  SiNextdotjs,
+  SiNodedotjs,
+  SiFastapi,
+  SiNestjs,
+  SiPostgresql,
+  SiDocker,
+  SiGit,
+  SiTailwindcss,
+  SiJavascript,
 } from 'react-icons/si';
 
 // Calculate duration between two dates
 function calculateDuration(startDate: string, endDate?: string): string {
   const start = new Date(startDate);
   const end = endDate ? new Date(endDate) : new Date();
-  
+
   let months = (end.getFullYear() - start.getFullYear()) * 12;
   months += end.getMonth() - start.getMonth();
-  
+
   // Add 1 to include current month
   if (!endDate) months += 1;
-  
+
   const years = Math.floor(months / 12);
   const remainingMonths = months % 12;
-  
+
   if (years === 0) {
     return `${remainingMonths} month${remainingMonths !== 1 ? 's' : ''}`;
   } else if (remainingMonths === 0) {
@@ -43,7 +69,8 @@ const experiences = [
     startDate: '2025-03-01',
     endDate: undefined, // Present
     location: 'Remote',
-    description: 'Building scalable applications and open-source developer tools. Creator of the RapidKit framework — passionate about Python, TypeScript, and crafting exceptional developer experiences.',
+    description:
+      'Building scalable applications and open-source developer tools. Creator of the RapidKit framework — passionate about Python, TypeScript, and crafting exceptional developer experiences.',
     highlights: [
       'Developed RapidKit framework for FastAPI and NestJS project generation with 27+ production-ready modules',
       'Built VS Code extension with IntelliSense support and module browser for seamless development',
@@ -51,7 +78,18 @@ const experiences = [
       'Established open-source community with comprehensive documentation and contributor guidelines',
       'Architected modular plugin system supporting authentication, database, caching, and more',
     ],
-    skills: ['Python', 'TypeScript', 'FastAPI', 'NestJS', 'React', 'Next.js', 'Docker', 'PostgreSQL', 'VS Code API', 'CLI Development'],
+    skills: [
+      'Python',
+      'TypeScript',
+      'FastAPI',
+      'NestJS',
+      'React',
+      'Next.js',
+      'Docker',
+      'PostgreSQL',
+      'VS Code API',
+      'CLI Development',
+    ],
     icon: Rocket,
     color: 'from-blue-500 to-purple-500',
   },
@@ -62,7 +100,8 @@ const experiences = [
     startDate: '2023-05-01',
     endDate: '2025-05-01',
     location: 'Tehran, Iran (On-site)',
-    description: 'Led frontend development team, architected scalable solutions, and mentored junior developers.',
+    description:
+      'Led frontend development team, architected scalable solutions, and mentored junior developers.',
     highlights: [
       'Led team of 5 frontend developers, establishing coding standards and best practices',
       'Architected and implemented micro-frontend architecture for enterprise applications',
@@ -81,7 +120,8 @@ const experiences = [
     startDate: '2016-01-01',
     endDate: '2025-03-01',
     location: 'Tehran, Iran',
-    description: 'Founded and developed custom software solutions for diverse clients across multiple industries.',
+    description:
+      'Founded and developed custom software solutions for diverse clients across multiple industries.',
     highlights: [
       'Built 50+ custom web applications for clients across e-commerce, healthcare, and fintech',
       'Managed full project lifecycle from requirements gathering to deployment',
@@ -89,7 +129,15 @@ const experiences = [
       'Developed reusable component libraries adopted by 20+ projects',
       'Provided technical consultation to startups on architecture and scalability',
     ],
-    skills: ['Project Management', 'Business Development', 'Full-Stack Development', 'React', 'Node.js', 'Python', 'DevOps'],
+    skills: [
+      'Project Management',
+      'Business Development',
+      'Full-Stack Development',
+      'React',
+      'Node.js',
+      'Python',
+      'DevOps',
+    ],
     icon: Code2,
     color: 'from-orange-500 to-red-500',
   },
@@ -100,7 +148,8 @@ const experiences = [
     startDate: '2021-09-01',
     endDate: '2022-09-01',
     location: 'Tehran, Iran (On-site)',
-    description: 'Developed medical technology applications with focus on performance and accessibility.',
+    description:
+      'Developed medical technology applications with focus on performance and accessibility.',
     highlights: [
       'Built patient management system serving 10,000+ users',
       'Implemented WCAG 2.1 AA accessibility standards across all features',
@@ -114,17 +163,17 @@ const experiences = [
 ];
 
 const skills = {
-  'Languages': [
+  Languages: [
     { name: 'TypeScript', icon: SiTypescript, color: '#3178C6' },
     { name: 'Python', icon: SiPython, color: '#3776AB' },
     { name: 'JavaScript', icon: SiJavascript, color: '#F7DF1E' },
   ],
-  'Frontend': [
+  Frontend: [
     { name: 'React', icon: SiReact, color: '#61DAFB' },
     { name: 'Next.js', icon: SiNextdotjs, color: '#000000', darkColor: '#FFFFFF' },
     { name: 'Tailwind CSS', icon: SiTailwindcss, color: '#06B6D4' },
   ],
-  'Backend': [
+  Backend: [
     { name: 'Node.js', icon: SiNodedotjs, color: '#339933' },
     { name: 'FastAPI', icon: SiFastapi, color: '#009688' },
     { name: 'NestJS', icon: SiNestjs, color: '#E0234E' },
@@ -139,7 +188,8 @@ const skills = {
 const projects = [
   {
     name: 'RapidKit Framework',
-    description: 'Production-ready FastAPI & NestJS project generator with 27+ modules including authentication, database, caching, logging, and more.',
+    description:
+      'Production-ready FastAPI & NestJS project generator with 27+ modules including authentication, database, caching, logging, and more.',
     link: '/rapidkit',
     tech: ['Python', 'TypeScript', 'CLI', 'Jinja2'],
     icon: 'rapidkit',
@@ -147,7 +197,8 @@ const projects = [
   },
   {
     name: 'RapidKit VS Code Extension',
-    description: 'Official VS Code extension providing IntelliSense, project management, and module browser for RapidKit framework.',
+    description:
+      'Official VS Code extension providing IntelliSense, project management, and module browser for RapidKit framework.',
     link: '/rapidkit-vscode',
     tech: ['TypeScript', 'VS Code API', 'Node.js'],
     icon: 'vscode',
@@ -155,7 +206,8 @@ const projects = [
   },
   {
     name: 'RapidKit CLI (NPM)',
-    description: 'CLI tool for creating RapidKit projects with Smart CLI Delegation and unified commands.',
+    description:
+      'CLI tool for creating RapidKit projects with Smart CLI Delegation and unified commands.',
     link: '/rapidkit-npm',
     tech: ['TypeScript', 'Node.js', 'CLI', 'NPM'],
     icon: 'npm',
@@ -181,13 +233,7 @@ export function ResumeContent() {
     }
     if (iconName === 'rapidkit') {
       return (
-        <Image 
-          src="/RapidKit.png" 
-          alt="RapidKit" 
-          width={32} 
-          height={32}
-          className="w-8 h-8"
-        />
+        <Image src="/RapidKit.png" alt="RapidKit" width={32} height={32} className="w-8 h-8" />
       );
     }
     return <Rocket className="w-6 h-6" />;
@@ -240,7 +286,10 @@ export function ResumeContent() {
                 </div>
                 <div className="flex items-center gap-2">
                   <Mail className="w-4 h-4" />
-                  <a href="mailto:baziar@live.com" className="hover:text-gray-900 dark:hover:text-white transition-colors">
+                  <a
+                    href="mailto:baziar@live.com"
+                    className="hover:text-gray-900 dark:hover:text-white transition-colors"
+                  >
                     baziar@live.com
                   </a>
                 </div>
@@ -267,7 +316,7 @@ export function ResumeContent() {
               </div>
             </div>
           </div>
-          
+
           {/* Right side: Download button */}
           <motion.button
             onClick={handleDownload}
@@ -288,10 +337,11 @@ export function ResumeContent() {
           className="p-6 bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-950/30 dark:to-purple-950/30 rounded-2xl border-2 border-blue-200 dark:border-purple-500/50"
         >
           <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-            Passionate full-stack developer with 9+ years of experience building scalable web applications and developer tools. 
-            Creator of RapidKit, an open-source framework that accelerates FastAPI and NestJS development with production-ready modules. 
-            Expertise in TypeScript, Python, React, and modern web technologies. Proven track record of leading teams, 
-            architecting complex systems, and delivering high-quality software solutions.
+            Passionate full-stack developer with 9+ years of experience building scalable web
+            applications and developer tools. Creator of RapidKit, an open-source framework that
+            accelerates FastAPI and NestJS development with production-ready modules. Expertise in
+            TypeScript, Python, React, and modern web technologies. Proven track record of leading
+            teams, architecting complex systems, and delivering high-quality software solutions.
           </p>
         </motion.div>
       </motion.div>
@@ -307,7 +357,7 @@ export function ResumeContent() {
           <Briefcase className="w-8 h-8" />
           Experience
         </h2>
-        
+
         <div className="space-y-6">
           {experiences.map((exp, index) => {
             const Icon = exp.icon;
@@ -319,15 +369,15 @@ export function ResumeContent() {
                 transition={{ delay: 0.3 + index * 0.1 }}
                 className="relative pl-8 pb-8 border-l-2 border-gray-200 dark:border-gray-800 last:pb-0"
               >
-                <div className={`absolute -left-4 top-0 w-8 h-8 rounded-full bg-gradient-to-br ${exp.color} flex items-center justify-center shadow-lg`}>
+                <div
+                  className={`absolute -left-4 top-0 w-8 h-8 rounded-full bg-gradient-to-br ${exp.color} flex items-center justify-center shadow-lg`}
+                >
                   <Icon className="w-4 h-4 text-white" />
                 </div>
-                
+
                 <div className="space-y-4">
                   <div>
-                    <h3 className="text-xl font-bold text-gray-900 dark:text-white">
-                      {exp.title}
-                    </h3>
+                    <h3 className="text-xl font-bold text-gray-900 dark:text-white">{exp.title}</h3>
                     <div className="flex flex-wrap items-center gap-2 text-gray-600 dark:text-gray-400 mt-1">
                       <span className="font-semibold">{exp.company}</span>
                       <span>•</span>
@@ -336,12 +386,17 @@ export function ResumeContent() {
                     <div className="flex flex-wrap items-center gap-2 text-sm text-gray-500 dark:text-gray-500 mt-1">
                       <Calendar className="w-3 h-3" />
                       <span>
-                        {new Date(exp.startDate).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })}
+                        {new Date(exp.startDate).toLocaleDateString('en-US', {
+                          month: 'short',
+                          year: 'numeric',
+                        })}
                         {' - '}
-                        {exp.endDate 
-                          ? new Date(exp.endDate).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })
-                          : 'Present'
-                        }
+                        {exp.endDate
+                          ? new Date(exp.endDate).toLocaleDateString('en-US', {
+                              month: 'short',
+                              year: 'numeric',
+                            })
+                          : 'Present'}
                       </span>
                       <span>•</span>
                       <span>{calculateDuration(exp.startDate, exp.endDate)}</span>
@@ -392,7 +447,7 @@ export function ResumeContent() {
           <Rocket className="w-8 h-8" />
           Key Projects
         </h2>
-        
+
         <div className="grid md:grid-cols-2 gap-6">
           {projects.map((project, index) => {
             const MotionLink = motion(Link);
@@ -412,7 +467,7 @@ export function ResumeContent() {
                   </div>
                   <ExternalLink className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity text-gray-400" />
                 </div>
-                
+
                 <h3 className="text-lg font-bold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-purple-400 transition-colors">
                   {project.name}
                 </h3>
@@ -446,7 +501,7 @@ export function ResumeContent() {
           <Code2 className="w-8 h-8" />
           Technical Skills
         </h2>
-        
+
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {Object.entries(skills).map(([category, categorySkills], index) => (
             <motion.div
@@ -456,9 +511,7 @@ export function ResumeContent() {
               transition={{ delay: 0.7 + index * 0.1 }}
               className="space-y-4"
             >
-              <h3 className="font-semibold text-gray-900 dark:text-white">
-                {category}
-              </h3>
+              <h3 className="font-semibold text-gray-900 dark:text-white">{category}</h3>
               <div className="space-y-3">
                 {categorySkills.map((skill) => {
                   const Icon = skill.icon;
@@ -469,15 +522,13 @@ export function ResumeContent() {
                     >
                       <Icon
                         className="w-5 h-5 group-hover:scale-110 transition-transform"
-                        style={{ 
-                          color: (skill as any).darkColor 
-                            ? 'currentColor' 
-                            : skill.color 
+                        style={{
+                          color: (skill as any).darkColor ? 'currentColor' : skill.color,
                         }}
                       />
                       {(skill as any).darkColor && (
-                        <Icon 
-                          className="w-5 h-5 group-hover:scale-110 transition-transform absolute dark:hidden" 
+                        <Icon
+                          className="w-5 h-5 group-hover:scale-110 transition-transform absolute dark:hidden"
                           style={{ color: skill.color }}
                         />
                       )}
@@ -504,11 +555,15 @@ export function ResumeContent() {
           <Users className="w-8 h-8" />
           Leadership & Soft Skills
         </h2>
-        
+
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
           {[
             { name: 'Team Leadership', icon: Users, color: 'from-purple-500 to-pink-500' },
-            { name: 'Mentoring & Coaching', icon: MessageSquare, color: 'from-blue-500 to-cyan-500' },
+            {
+              name: 'Mentoring & Coaching',
+              icon: MessageSquare,
+              color: 'from-blue-500 to-cyan-500',
+            },
             { name: 'Problem Solving', icon: Lightbulb, color: 'from-yellow-500 to-orange-500' },
             { name: 'Communication', icon: MessageSquare, color: 'from-green-500 to-emerald-500' },
             { name: 'Project Management', icon: Target, color: 'from-red-500 to-rose-500' },
@@ -523,15 +578,19 @@ export function ResumeContent() {
                 whileHover={{ scale: 1.05, y: -5 }}
                 className="group relative p-4 rounded-xl bg-white dark:bg-gray-900 border-2 border-gray-200 dark:border-gray-800 hover:border-gray-300 dark:hover:border-gray-700 transition-all cursor-default text-center space-y-2"
               >
-                <div className={`w-12 h-12 mx-auto rounded-full bg-gradient-to-br ${skill.color} flex items-center justify-center shadow-lg group-hover:shadow-xl transition-shadow`}>
+                <div
+                  className={`w-12 h-12 mx-auto rounded-full bg-gradient-to-br ${skill.color} flex items-center justify-center shadow-lg group-hover:shadow-xl transition-shadow`}
+                >
                   <Icon className="w-6 h-6 text-white" />
                 </div>
                 <p className="text-xs font-semibold text-gray-700 dark:text-gray-300 leading-tight">
                   {skill.name}
                 </p>
-                
+
                 {/* Hover glow */}
-                <div className={`absolute inset-0 rounded-xl opacity-0 group-hover:opacity-20 blur-xl transition-opacity -z-10 bg-gradient-to-br ${skill.color}`} />
+                <div
+                  className={`absolute inset-0 rounded-xl opacity-0 group-hover:opacity-20 blur-xl transition-opacity -z-10 bg-gradient-to-br ${skill.color}`}
+                />
               </motion.div>
             );
           })}
@@ -549,7 +608,7 @@ export function ResumeContent() {
           <Globe className="w-8 h-8" />
           Education
         </h2>
-        
+
         <motion.div
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
@@ -559,7 +618,7 @@ export function ResumeContent() {
           <div className="absolute -left-4 top-0 w-8 h-8 rounded-full bg-gradient-to-br from-indigo-500 to-blue-500 flex items-center justify-center shadow-lg">
             <Globe className="w-4 h-4 text-white" />
           </div>
-          
+
           <div className="space-y-2 pb-6">
             <h3 className="text-xl font-bold text-gray-900 dark:text-white">
               Master of Science (M.Sc.)
@@ -588,7 +647,7 @@ export function ResumeContent() {
           <Globe className="w-8 h-8" />
           Languages
         </h2>
-        
+
         <div className="grid sm:grid-cols-2 gap-6">
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
@@ -600,7 +659,9 @@ export function ResumeContent() {
               <span className="text-2xl">🇺🇸</span>
               <h3 className="text-lg font-bold text-gray-900 dark:text-white">English</h3>
             </div>
-            <p className="text-sm text-gray-700 dark:text-gray-300 font-semibold">Professional Working Proficiency</p>
+            <p className="text-sm text-gray-700 dark:text-gray-300 font-semibold">
+              Professional Working Proficiency
+            </p>
             <div className="mt-3 flex gap-1">
               {[1, 2, 3, 4].map((i) => (
                 <div key={i} className="h-2 flex-1 bg-blue-500 rounded-full" />
@@ -619,7 +680,9 @@ export function ResumeContent() {
               <span className="text-2xl">🗣️</span>
               <h3 className="text-lg font-bold text-gray-900 dark:text-white">Persian (Farsi)</h3>
             </div>
-            <p className="text-sm text-gray-700 dark:text-gray-300 font-semibold">Native / Bilingual Proficiency</p>
+            <p className="text-sm text-gray-700 dark:text-gray-300 font-semibold">
+              Native / Bilingual Proficiency
+            </p>
             <div className="mt-3 flex gap-1">
               {[1, 2, 3, 4, 5].map((i) => (
                 <div key={i} className="h-2 flex-1 bg-emerald-500 rounded-full" />

@@ -5,7 +5,12 @@ import { Rocket } from 'lucide-react';
 
 export function ProjectsHeader() {
   return (
-    <motion.div className="space-y-4" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}>
+    <motion.div
+      className="space-y-4"
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true }}
+    >
       <div className="flex items-center gap-2 text-xs sm:text-sm text-gray-600 dark:text-gray-400 uppercase tracking-wider">
         <Rocket className="w-4 h-4" />
         Featured Projects

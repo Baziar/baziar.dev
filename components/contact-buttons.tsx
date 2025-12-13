@@ -5,7 +5,13 @@ import { Github, Linkedin, Mail, Rocket } from 'lucide-react';
 
 export function ContactButtons() {
   return (
-    <motion.div className="flex flex-wrap justify-center gap-4" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.2 }}>
+    <motion.div
+      className="flex flex-wrap justify-center gap-4"
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true }}
+      transition={{ delay: 0.2 }}
+    >
       <motion.a
         whileHover={{ scale: 1.05, boxShadow: '0 10px 25px rgba(0,0,0,0.15)' }}
         whileTap={{ scale: 0.95 }}
@@ -17,7 +23,7 @@ export function ContactButtons() {
         </motion.div>
         baziar@live.com
       </motion.a>
-      
+
       <motion.a
         whileHover={{ scale: 1.05, boxShadow: '0 10px 25px rgba(0,0,0,0.1)' }}
         whileTap={{ scale: 0.95 }}
@@ -31,7 +37,7 @@ export function ContactButtons() {
         </motion.div>
         GitHub
       </motion.a>
-      
+
       <motion.a
         whileHover={{ scale: 1.05, boxShadow: '0 10px 25px rgba(0,207,193,0.2)' }}
         whileTap={{ scale: 0.95 }}
@@ -45,7 +51,7 @@ export function ContactButtons() {
         </motion.div>
         RapidKit
       </motion.a>
-      
+
       <motion.a
         whileHover={{ scale: 1.05, boxShadow: '0 10px 25px rgba(10,102,194,0.2)' }}
         whileTap={{ scale: 0.95 }}

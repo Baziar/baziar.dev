@@ -33,7 +33,7 @@ export function LiveStats({ type }: LiveStatsProps) {
           // Fetch NPM stats
           const [registryRes, downloadsRes] = await Promise.all([
             fetch('https://registry.npmjs.org/rapidkit'),
-            fetch('https://api.npmjs.org/downloads/point/last-week/rapidkit')
+            fetch('https://api.npmjs.org/downloads/point/last-week/rapidkit'),
           ]);
 
           const registryData = await registryRes.json();
@@ -52,14 +52,12 @@ export function LiveStats({ type }: LiveStatsProps) {
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json',
-                'Accept': 'application/json;api-version=3.0-preview.1',
+                Accept: 'application/json;api-version=3.0-preview.1',
               },
               body: JSON.stringify({
                 filters: [
                   {
-                    criteria: [
-                      { filterType: 7, value: 'rapidkit.rapidkit-vscode' }
-                    ],
+                    criteria: [{ filterType: 7, value: 'rapidkit.rapidkit-vscode' }],
                     pageSize: 1,
                   },
                 ],
@@ -74,8 +72,10 @@ export function LiveStats({ type }: LiveStatsProps) {
           if (extension) {
             const stats = extension.statistics || [];
             const installs = stats.find((s: any) => s.statisticName === 'install')?.value || 0;
-            const avgRating = stats.find((s: any) => s.statisticName === 'averagerating')?.value || 0;
-            const ratingCount = stats.find((s: any) => s.statisticName === 'ratingcount')?.value || 0;
+            const avgRating =
+              stats.find((s: any) => s.statisticName === 'averagerating')?.value || 0;
+            const ratingCount =
+              stats.find((s: any) => s.statisticName === 'ratingcount')?.value || 0;
 
             setVSCodeStats({
               version: extension.versions?.[0]?.version || '0.2.0',

@@ -1,12 +1,22 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { 
-  SiTypescript, SiPython, SiReact, SiNextdotjs, SiNodedotjs,
-  SiFastapi, SiNestjs, SiPostgresql, SiDocker, SiGit,
-  SiTailwindcss, SiJavascript, SiLinux
+import {
+  SiTypescript,
+  SiPython,
+  SiReact,
+  SiNextdotjs,
+  SiNodedotjs,
+  SiFastapi,
+  SiNestjs,
+  SiPostgresql,
+  SiDocker,
+  SiGit,
+  SiTailwindcss,
+  SiJavascript,
+  SiLinux,
 } from 'react-icons/si';
-import { VscVscode } from "react-icons/vsc";
+import { VscVscode } from 'react-icons/vsc';
 
 const skills = [
   { name: 'TypeScript', icon: SiTypescript, color: '#3178C6' },
@@ -29,7 +39,7 @@ export function SkillsSection() {
   return (
     <div className="space-y-8">
       <div className="text-center space-y-3">
-        <motion.h2 
+        <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -37,7 +47,7 @@ export function SkillsSection() {
         >
           Skills & Technologies
         </motion.h2>
-        <motion.p 
+        <motion.p
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -48,7 +58,7 @@ export function SkillsSection() {
         </motion.p>
       </div>
 
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
@@ -69,29 +79,27 @@ export function SkillsSection() {
             >
               {/* Icon with original brand color */}
               <div className="relative">
-                <Icon 
-                  className="w-10 h-10 sm:w-12 sm:h-12 transition-transform group-hover:rotate-12" 
-                  style={{ 
-                    color: skill.darkColor 
-                      ? 'currentColor' 
-                      : skill.color 
+                <Icon
+                  className="w-10 h-10 sm:w-12 sm:h-12 transition-transform group-hover:rotate-12"
+                  style={{
+                    color: skill.darkColor ? 'currentColor' : skill.color,
                   }}
                 />
                 {skill.darkColor && (
-                  <Icon 
-                    className="w-10 h-10 sm:w-12 sm:h-12 transition-transform group-hover:rotate-12 absolute inset-0 dark:hidden" 
+                  <Icon
+                    className="w-10 h-10 sm:w-12 sm:h-12 transition-transform group-hover:rotate-12 absolute inset-0 dark:hidden"
                     style={{ color: skill.color }}
                   />
                 )}
               </div>
-              
+
               {/* Skill Name */}
               <span className="text-xs sm:text-sm font-semibold text-gray-700 dark:text-gray-300 text-center">
                 {skill.name}
               </span>
 
               {/* Hover glow effect */}
-              <div 
+              <div
                 className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-20 blur-xl transition-opacity -z-10"
                 style={{ backgroundColor: skill.color }}
               />
