@@ -23,30 +23,27 @@ async function getVersions() {
       fetch('https://registry.npmjs.org/rapidkit', {
         next: { revalidate: 3600 },
       }),
-      fetch(
-        'https://marketplace.visualstudio.com/_apis/public/gallery/extensionquery',
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            Accept: 'application/json;api-version=3.0-preview.1',
-          },
-          body: JSON.stringify({
-            filters: [
-              {
-                criteria: [
-                  {
-                    filterType: 7,
-                    value: 'rapidkit.rapidkit-vscode',
-                  },
-                ],
-              },
-            ],
-            flags: 914,
-          }),
-          next: { revalidate: 3600 },
-        }
-      ),
+      fetch('https://marketplace.visualstudio.com/_apis/public/gallery/extensionquery', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json;api-version=3.0-preview.1',
+        },
+        body: JSON.stringify({
+          filters: [
+            {
+              criteria: [
+                {
+                  filterType: 7,
+                  value: 'rapidkit.rapidkit-vscode',
+                },
+              ],
+            },
+          ],
+          flags: 914,
+        }),
+        next: { revalidate: 3600 },
+      }),
     ]);
 
     let npmVersion = '0.12.3';
