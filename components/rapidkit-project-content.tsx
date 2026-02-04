@@ -17,7 +17,7 @@ import {
   Blocks,
   Globe,
 } from 'lucide-react';
-import { SiNpm, SiFastapi, SiNestjs } from 'react-icons/si';
+import { SiNpm, SiFastapi, SiNestjs, SiPython } from 'react-icons/si';
 import { VscVscode } from 'react-icons/vsc';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -25,6 +25,7 @@ import { useState, useEffect } from 'react';
 
 interface Versions {
   npm: string;
+  pip: string;
   vscode: string;
   updatedAt: string;
 }
@@ -32,11 +33,12 @@ interface Versions {
 export function RapidKitProjectContent() {
   const [copied, setCopied] = useState(false);
   const [versions, setVersions] = useState<Versions>({
-    npm: '0.12.3',
-    vscode: '0.4.1',
+    npm: '0.16.4',
+    pip: '0.2.2',
+    vscode: '0.6.1',
     updatedAt: new Date().toISOString(),
   });
-  const installCommand = 'npx rapidkit my-api --template fastapi';
+  const installCommand = 'pip install rapidkit-core';
 
   useEffect(() => {
     // Fetch versions on mount
@@ -115,6 +117,15 @@ export function RapidKitProjectContent() {
       primary: true,
     },
     {
+      title: 'Python Package',
+      description: 'Install with pip install rapidkit-core',
+      href: 'https://pypi.org/project/rapidkit-core/',
+      icon: <SiPython className="w-6 h-6" />,
+      color: 'bg-gradient-to-br from-yellow-500 to-blue-600',
+      // primary: true,
+      badge: `v${versions.pip}`,
+    },
+    {
       title: 'NPM Package',
       description: 'Install with npx rapidkit',
       href: 'https://npmjs.com/package/rapidkit',
@@ -129,13 +140,6 @@ export function RapidKitProjectContent() {
       icon: <VscVscode className="w-6 h-6" />,
       color: 'bg-[#007ACC]',
       badge: `v${versions.vscode}`,
-    },
-    {
-      title: 'GitHub Repository',
-      description: 'Source code and contributions',
-      href: 'https://github.com/getrapidkit/community',
-      icon: <Github className="w-6 h-6" />,
-      color: 'bg-gray-800 dark:bg-gray-700',
     },
   ];
 
@@ -184,6 +188,10 @@ export function RapidKitProjectContent() {
 
           {/* Badges */}
           <div className="flex items-center justify-center gap-3 flex-wrap">
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 text-sm font-medium">
+              <SiPython className="w-4 h-4" />
+              Python
+            </span>
             <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400 text-sm font-medium">
               <SiFastapi className="w-4 h-4" />
               FastAPI
@@ -276,11 +284,10 @@ export function RapidKitProjectContent() {
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1 }}
               whileHover={{ scale: 1.02 }}
-              className={`group relative p-6 rounded-2xl border transition-all ${
-                link.primary
+              className={`group relative p-6 rounded-2xl border transition-all ${link.primary
                   ? 'border-purple-500/50 bg-gradient-to-br from-blue-500/10 via-purple-500/10 to-pink-500/10 hover:border-purple-400'
                   : 'border-gray-200 dark:border-gray-800 hover:border-gray-400 dark:hover:border-gray-600 bg-white dark:bg-gray-900/50'
-              }`}
+                }`}
             >
               <div className="flex items-start justify-between">
                 <div className={`p-3 rounded-xl ${link.color} text-white`}>{link.icon}</div>
@@ -400,7 +407,7 @@ export function RapidKitProjectContent() {
               <ArrowRight className="w-4 h-4" />
             </a>
             <a
-              href="https://github.com/getrapidkit/community"
+              href="https://github.com/getrapidkit/core"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-6 py-3 border border-gray-300 dark:border-gray-700 hover:border-gray-400 dark:hover:border-gray-600 rounded-xl font-semibold transition-all"

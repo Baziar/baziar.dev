@@ -18,8 +18,8 @@ export const metadata: Metadata = {
 
 async function getVersions() {
   try {
-    // Fetch directly from npm registry (works in build time)
-    const [npmRes, vscodeRes] = await Promise.all([
+    // Fetch directly from npm registry and PyPI (works in build time)
+    const [npmRes, vscodeRes, pypiRes] = await Promise.all([
       fetch('https://registry.npmjs.org/rapidkit', {
         next: { revalidate: 3600 },
       }),
@@ -44,10 +44,12 @@ async function getVersions() {
         }),
         next: { revalidate: 3600 },
       }),
+      fetch('https://pypi.org/pypi/rapidkit-core/json', { next: { revalidate: 3600 } }),
     ]);
 
-    let npmVersion = '0.12.3';
-    let vscodeVersion = '0.4.1';
+    let npmVersion = '0.16.4';
+    let vscodeVersion = '0.6.1';
+    let pipVersion = '0.2.2rc1';
 
     if (npmRes.ok) {
       const npmData = await npmRes.json();
@@ -62,10 +64,16 @@ async function getVersions() {
       }
     }
 
-    return { npm: npmVersion, vscode: vscodeVersion };
+    if (pypiRes.ok) {
+      const pypiData = await pypiRes.json();
+      const v = pypiData?.info?.version;
+      if (v) pipVersion = v;
+    }
+
+    return { npm: npmVersion, vscode: vscodeVersion, pip: pipVersion };
   } catch (error) {
     console.error('Failed to fetch versions:', error);
-    return { npm: '0.12.3', vscode: '0.4.1' };
+    return { npm: '0.16.4', vscode: '0.6.1', pip: '0.2.2rc1' };
   }
 }
 
@@ -87,14 +95,15 @@ export default async function Home() {
 
   const projects = [
     {
-      title: 'RapidKit Framework',
+      title: 'RapidKit Core',
       description:
         'Open-source framework for building production-ready FastAPI & NestJS projects with 27+ modules',
       link: '/rapidkit',
       tags: ['TypeScript', 'Python', 'Framework', 'Open Source'],
       icon: 'rapidkit',
-      version: '0.1.0 Alpha',
+      version: versions.pip,
     },
+
     {
       title: 'RapidKit VS Code',
       description:
@@ -106,8 +115,7 @@ export default async function Home() {
     },
     {
       title: 'RapidKit CLI',
-      description:
-        'NPM package for instant project creation - npx rapidkit my-api --template fastapi',
+      description: 'NPM package for instant project creation - npx rapidkit create project',
       link: '/rapidkit-npm',
       tags: ['NPM', 'CLI', 'Node.js'],
       icon: 'npm',
@@ -248,7 +256,7 @@ export default async function Home() {
             <div className="flex flex-col md:flex-row justify-between items-center gap-6">
               <div className="text-center md:text-left">
                 <p className="text-sm text-gray-600 dark:text-gray-400">
-                  © 2025{' '}
+                  © 2026{' '}
                   <span className="font-semibold text-gray-900 dark:text-white">
                     Morteza Baziar
                   </span>

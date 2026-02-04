@@ -14,6 +14,7 @@ interface Project {
   tags: string[];
   icon?: string;
   version?: string;
+  pipVersion?: string;
 }
 
 interface ProjectsGridProps {
@@ -47,10 +48,10 @@ export function ProjectsGrid({ projects }: ProjectsGridProps) {
         const Component = external ? motion.a : motion(Link);
         const linkProps = external
           ? {
-              href: project.link,
-              target: '_blank',
-              rel: 'noopener noreferrer',
-            }
+            href: project.link,
+            target: '_blank',
+            rel: 'noopener noreferrer',
+          }
           : { href: project.link };
 
         return (
@@ -69,9 +70,19 @@ export function ProjectsGrid({ projects }: ProjectsGridProps) {
                 {getIcon(project.icon)}
               </div>
               <div className="flex items-center gap-2">
-                {project.version && (
+                {project.icon === "rapidkit" && project.version && (
+                  <span className="px-2 py-0.5 text-xs font-mono bg-green-100 dark:bg-green-900 text-green-700 dark:text-green-300 rounded">
+                    pip v{project.version}
+                  </span>
+                )}
+                {project.icon === "vscode" && project.version && (
+                  <span className="px-2 py-0.5 text-xs font-mono bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300 rounded">
+                    vs v{project.version}
+                  </span>
+                )}
+                {project.icon === "npm" && project.version && (
                   <span className="px-2 py-0.5 text-xs font-mono bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 rounded">
-                    v{project.version}
+                    npm v{project.version}
                   </span>
                 )}
                 <ExternalLink className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" />

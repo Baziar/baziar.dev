@@ -27,7 +27,7 @@ interface RapidKitNpmContentProps {
 
 export function RapidKitNpmContent({ version = '0.12.3' }: RapidKitNpmContentProps) {
   const [copied, setCopied] = useState(false);
-  const installCommand = 'npx rapidkit my-api --template fastapi';
+  const installCommand = 'npx rapidkit create project fastapi.standard my-api';
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(installCommand);
@@ -52,8 +52,8 @@ export function RapidKitNpmContent({ version = '0.12.3' }: RapidKitNpmContentPro
       title: 'Unified Project Creation',
       description: 'Create FastAPI and NestJS projects with a single command.',
       items: [
-        'npx rapidkit project-name --template fastapi',
-        'npx rapidkit project-name --template nestjs',
+        'npx rapidkit create project fastapi.standard my-api',
+        'npx rapidkit create project nestjs.standard my-api',
         'Interactive framework selection',
         'Workspace architecture support',
       ],
@@ -109,7 +109,7 @@ export function RapidKitNpmContent({ version = '0.12.3' }: RapidKitNpmContentPro
       title: 'FastAPI Project',
       badge: 'Python',
       description: 'Create production-ready FastAPI projects with DDD architecture',
-      command: 'npx rapidkit my-api --template fastapi',
+      command: 'npx rapidkit create project fastapi.standard my-api',
       steps: [
         'Smart CLI Delegation to Python RapidKit',
         'Access 27+ production modules',
@@ -121,7 +121,7 @@ export function RapidKitNpmContent({ version = '0.12.3' }: RapidKitNpmContentPro
       title: 'NestJS Project',
       badge: 'TypeScript',
       description: 'Create enterprise-ready NestJS projects',
-      command: 'npx rapidkit my-api --template nestjs',
+      command: 'npx rapidkit create project nestjs.standard my-api',
       steps: [
         'TypeScript-first development',
         'Modular architecture',
@@ -135,8 +135,8 @@ export function RapidKitNpmContent({ version = '0.12.3' }: RapidKitNpmContentPro
     {
       step: '1',
       title: 'Create Project',
-      fastapi: 'npx rapidkit my-api --template fastapi',
-      nestjs: 'npx rapidkit my-api --template nestjs',
+      fastapi: 'npx rapidkit create project fastapi.standard my-api',
+      nestjs: 'npx rapidkit create project nestjs.standard my-api',
     },
     {
       step: '2',
@@ -420,7 +420,7 @@ export function RapidKitNpmContent({ version = '0.12.3' }: RapidKitNpmContentPro
 
           <div className="flex flex-col gap-4">
             <code className="px-6 py-4 bg-gray-900 dark:bg-black text-green-400 rounded-lg font-mono text-lg">
-              npx rapidkit my-api --template fastapi
+              npx rapidkit create project fastapi.standard my-api
             </code>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">

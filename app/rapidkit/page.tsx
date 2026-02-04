@@ -94,7 +94,7 @@ export default async function RapidKitPage() {
     ],
     programmingLanguage: ['Python', 'TypeScript'],
     isAccessibleForFree: true,
-    license: 'https://github.com/getrapidkit/community/blob/main/LICENSE',
+    license: 'https://github.com/getrapidkit/rapidkit-core/blob/main/LICENSE',
   };
 
   return (
