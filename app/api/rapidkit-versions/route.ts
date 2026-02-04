@@ -15,9 +15,21 @@ interface VSCodeResponse {
   }>;
 }
 
+interface PyPIResponse {
+  info?: {
+    version?: string;
+  };
+  releases?: Record<
+    string,
+    Array<{
+      upload_time_iso_8601?: string;
+    }>
+  >;
+}
+
 export async function GET() {
   try {
-    const [npmRes, vscodeRes] = await Promise.all([
+    const [npmRes, vscodeRes, pypiRes] = await Promise.all([
       // Fetch NPM version
       fetch('https://registry.npmjs.org/rapidkit', {
         next: { revalidate: 3600 },
@@ -44,10 +56,16 @@ export async function GET() {
         }),
         next: { revalidate: 3600 },
       }),
+      // Fetch PyPI (rapidkit-core) metadata
+      fetch('https://pypi.org/pypi/rapidkit-core/json', {
+        next: { revalidate: 3600 },
+      }),
     ]);
 
-    let npmVersion = '0.12.3'; // Fallback
-    let vscodeVersion = '0.4.1'; // Fallback
+    let npmVersion = '0.16.4'; // Fallback
+    let pipVersion = '0.2.2rc1'; // Fallback
+    let pipReleased: string | null = null;
+    let vscodeVersion = '0.6.1'; // Fallback
 
     // Parse NPM version
     if (npmRes.ok) {
@@ -64,8 +82,22 @@ export async function GET() {
       }
     }
 
+    // Parse PyPI (rapidkit-core) version and release time
+    if (pypiRes.ok) {
+      const pypiData: PyPIResponse = await pypiRes.json();
+      const version = pypiData.info?.version;
+      if (version) {
+        pipVersion = version;
+        const files = pypiData.releases?.[version] || [];
+        // Prefer the first upload timestamp if available
+        pipReleased = files[0]?.upload_time_iso_8601 || null;
+      }
+    }
+
     return NextResponse.json({
       npm: npmVersion,
+      pip: pipVersion,
+      pipReleasedAt: pipReleased,
       vscode: vscodeVersion,
       updatedAt: new Date().toISOString(),
     });
@@ -74,8 +106,10 @@ export async function GET() {
 
     // Return fallback versions on error
     return NextResponse.json({
-      npm: '0.12.3',
-      vscode: '0.4.1',
+      npm: '0.16.4',
+      pip: '0.2.2rc1',
+      pipReleasedAt: null,
+      vscode: '0.6.1',
       updatedAt: new Date().toISOString(),
       error: 'Failed to fetch latest versions',
     });
